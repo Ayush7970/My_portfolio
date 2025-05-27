@@ -1,0 +1,82 @@
+import React from 'react';
+
+import { ArrowDownCircle, Github, Linkedin, Mail } from 'lucide-react'; // keep this if you're using lucide-react
+import { TypeAnimation } from 'react-type-animation'; // if you use react-type-animation
+
+const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      window.scrollTo({
+        top: contactSection.offsetTop - 80,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section id="hero" className="hero-container">
+        <div className="hero-img-wrapper">
+        <img
+        src= "/public/headshot2.png" // or your actual image path
+        alt="Ayush Bhardwaj"
+        className="hero-img"
+        />
+        </div>
+
+      <h1 className="hero-title">
+        Hi, I'm <span className="accent">Ayush Bhardwaj</span>
+      </h1>
+      <div className="hero-typing">
+        <TypeAnimation
+          sequence={[
+            'Software Engineer', 1000,
+            'Web Developer', 1000,
+            'ML Enthusiast', 1000,
+            'Problem Solver', 1000,
+          ]}
+          wrapper="span"
+          speed={50}
+          repeat={Infinity}
+        />
+      </div>
+      <p className="hero-desc">
+        I build exceptional digital experiences, develop scalable applications, and create
+        innovative solutions to complex problems.
+      </p>
+      <div className="hero-links">
+        <a
+          href="https://github.com/Ayush7970"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-btn"
+        >
+          <Github size={18} /> GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/ayush--bhardwaj"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-btn"
+        >
+          <Linkedin size={18} /> LinkedIn
+        </a>
+        <a
+          href="mailto:ayush975600@gmail.com"
+          className="hero-btn primary"
+        >
+          <Mail size={18} /> Contact
+        </a>
+      </div>
+      <button
+        onClick={scrollToContact}
+        className="hero-scroll-btn"
+        aria-label="Scroll down"
+      >
+        <ArrowDownCircle size={36} />
+      </button>
+    </section>
+  );
+};
+
+export default Hero;
