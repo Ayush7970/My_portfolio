@@ -68,6 +68,8 @@ const Skills = () => {
       <div className="container">
         <div className="section-title">
           <h2>Skills</h2>
+          <span className="skills-section-title-underline"></span>
+          
         </div>
 
         <div className="skills-filter">

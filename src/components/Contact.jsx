@@ -71,7 +71,8 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-title">
-          <h2><span>Contact Me</span></h2>
+          <h2>Contact Me</h2>
+          <span></span>
         </div>
         <div className="contact-content">
           {/* Left: Contact Info */}

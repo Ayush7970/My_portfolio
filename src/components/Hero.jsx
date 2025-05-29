@@ -32,8 +32,8 @@ const Hero = () => {
           sequence={[
             'Software Engineer', 1000,
             'Web Developer', 1000,
-            'ML Enthusiast', 1000,
-            'Problem Solver', 1000,
+            'ML Engineer', 1000,
+            'Android Developer', 1000,
           ]}
           wrapper="span"
           speed={50}
@@ -41,8 +41,7 @@ const Hero = () => {
         />
       </div>
       <p className="hero-desc">
-        I build exceptional digital experiences, develop scalable applications, and create
-        innovative solutions to complex problems.
+        Turning caffeine into clean code and big ideas into amazing products.
       </p>
       <div className="hero-links">
         <a
