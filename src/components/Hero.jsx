@@ -20,7 +20,7 @@ const Hero = () => {
     <section id="hero" className="hero-container">
         <div className="hero-img-wrapper">
         <img
-        src= "/public/headshot2.jpg" // or your actual image path
+        src= "/headshot2.jpg" 
         alt="Ayush Bhardwaj"
         className="hero-img"
         />
