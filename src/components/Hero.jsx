@@ -1,4 +1,6 @@
 import React from 'react';
+import { FileText } from 'lucide-react';
+
 
 import { ArrowDownCircle, Github, Linkedin, Mail } from 'lucide-react'; // keep this if you're using lucide-react
 import { TypeAnimation } from 'react-type-animation'; // if you use react-type-animation
@@ -61,10 +63,13 @@ const Hero = () => {
           <Linkedin size={18} /> LinkedIn
         </a>
         <a
-          href="mailto:ayush975600@gmail.com"
+          href="/Ayush_Bhardwaj_Resume.pdf"
           className="hero-btn primary"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <Mail size={18} /> Contact
+          <FileText size={18} style={{ marginRight: 7, marginBottom: -2 }} />
+          Resume
         </a>
       </div>
       <button

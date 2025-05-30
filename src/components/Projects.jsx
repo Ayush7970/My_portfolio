@@ -203,7 +203,8 @@ const Projects = () => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
           gap: '2.2rem',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          
         }}>
           {filtered.map((project, i) => (
             <div key={i} className="project-card" style={{

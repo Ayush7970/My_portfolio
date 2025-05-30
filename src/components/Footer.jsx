@@ -37,12 +37,14 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:ayush975600@gmail.com"
-              className="footer-icon"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </a>
+            href="https://mail.google.com/mail/?view=cm&to=ayush975600@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-icon"
+            aria-label="Email"
+          >
+            <Mail size={20} />
+          </a>
           </div>
           <button
             onClick={scrollToTop}

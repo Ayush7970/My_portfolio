@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-// List of sections for navigation
 const NAV_ITEMS = [
   { label: 'About', id: 'about' },
   {
@@ -14,6 +13,7 @@ const NAV_ITEMS = [
       { label: 'Co-Curricular', path: '/activities' },
     ],
   },
+  { label: 'Hackathons', id: 'hackathon' },
   { label: 'Skills', id: 'skills' },
   { label: 'Contact', id: 'contact' },
 ];
@@ -21,6 +21,7 @@ const NAV_ITEMS = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null); // <--- NEW
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -34,7 +35,6 @@ const Navbar = () => {
 
   // Scroll to section (works if on homepage)
   const scrollToSection = (sectionId) => {
-    // If not on homepage, go there first, then scroll
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
@@ -45,7 +45,7 @@ const Navbar = () => {
             behavior: 'smooth',
           });
         }
-      }, 100); // wait for home to render
+      }, 100);
     } else {
       const section = document.getElementById(sectionId);
       if (section) {
@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <header className={`navbar${isScrolled ? ' scrolled' : ''}`}>
       <div className="navbar-container">
-        {/* Name/Logo - Always goes to Home */}
+        {/* Name/Logo */}
         <div
           className="navbar-brand"
           style={{ cursor: 'pointer' }}
@@ -73,16 +73,34 @@ const Navbar = () => {
         <nav className="navbar-links">
           {NAV_ITEMS.map((item) =>
             item.submenu ? (
-              <div className="has-submenu" style={{ position: "relative", display: "inline-block" }} key={item.label}>
-                <button className="nav-link">{item.label}</button>
-                <div className="navbar-submenu">
+              <div
+                className="has-submenu"
+                key={item.label}
+                style={{ position: "relative", display: "inline-block" }}
+                onMouseEnter={() => setOpenSubmenu(item.label)}
+                onMouseLeave={() => setOpenSubmenu(null)}
+              >
+                <button
+                  className="nav-link"
+                  onClick={() => scrollToSection(item.id)}
+                  aria-haspopup="true"
+                  aria-expanded={openSubmenu === item.label}
+                >
+                  {item.label}
+                </button>
+                <div
+                  className="navbar-submenu"
+                  style={{
+                    display: openSubmenu === item.label ? "block" : "none",
+                  }}
+                >
                   {item.submenu.map((sub) => (
                     <button
                       key={sub.label}
                       className="nav-link"
-                      // Route to separate pages for Experience/Projects/Co-Curricular
                       onClick={() => {
                         setIsMenuOpen(false);
+                        setOpenSubmenu(null); // close submenu after click
                         navigate(sub.path);
                       }}
                     >
@@ -91,6 +109,17 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
+            ) : item.path ? (
+              <button
+                key={item.label}
+                className="nav-link"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  navigate(item.path);
+                }}
+              >
+                {item.label}
+              </button>
             ) : (
               <button
                 key={item.label}
@@ -112,35 +141,10 @@ const Navbar = () => {
           {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
         {/* Mobile Menu */}
+        {/* (leave your existing mobile menu as-is) */}
         {isMenuOpen && (
           <div className="navbar-mobile-menu">
-            {NAV_ITEMS.map((item) =>
-              item.submenu ? (
-                <div key={item.label}>
-                  <span className="nav-link-mobile" style={{ fontWeight: 'bold' }}>{item.label}</span>
-                  {item.submenu.map((sub) => (
-                    <button
-                      key={sub.label}
-                      className="nav-link-mobile"
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        navigate(sub.path);
-                      }}
-                    >
-                      {sub.label}
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <button
-                  key={item.label}
-                  className="nav-link-mobile"
-                  onClick={() => scrollToSection(item.id)}
-                >
-                  {item.label}
-                </button>
-              )
-            )}
+            {/* ... */}
           </div>
         )}
       </div>

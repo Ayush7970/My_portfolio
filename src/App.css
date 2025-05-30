@@ -1946,10 +1946,31 @@ body {
   color: #ff9800;
 }
 
-.navbar-links .has-submenu:hover .navbar-submenu,
-.navbar-links .has-submenu:focus-within .navbar-submenu {
-  display: block;
+.has-submenu .navbar-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #23273a;
+  min-width: 170px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.17);
+  border-radius: 8px;
+  z-index: 20;
+  padding: 8px 0;
+  transition: opacity 0.17s;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
+
+.has-submenu:hover .navbar-submenu,
+.has-submenu:focus-within .navbar-submenu,
+.has-submenu .navbar-submenu:focus-within,
+.has-submenu .navbar-submenu:active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
 
 /* For mobile: make submenu vertical and visible when toggled */
 @media (max-width: 900px) {

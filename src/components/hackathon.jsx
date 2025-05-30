@@ -23,6 +23,7 @@ export default function HackathonCarousel() {
   const next = () => setCurrent((c) => wrap(c + 1, n));
 
   return (
+    <section id="hackathon">   
     <section className="carousel-section">
       <h2 className="carousel-title">Hackathon Gallery</h2>
       <span className="carousel-section-underline"></span>
@@ -52,6 +53,7 @@ export default function HackathonCarousel() {
           />
         ))}
       </div>
+    </section>
     </section>
   );
 }
