@@ -20,7 +20,7 @@ const Hero = () => {
     <section id="hero" className="hero-container">
         <div className="hero-img-wrapper">
         <img
-        src= "/headshot2.jpg" 
+        src= "/headshot2.png" 
         alt="Ayush Bhardwaj"
         className="hero-img"
         />
