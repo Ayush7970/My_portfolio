@@ -23,6 +23,11 @@ export const leadershipData = [
     description: `Consistently named to UIC’s Dean’s List (top 5%) for strong academics and GPA. Balanced challenging CS courses with campus leadership and activities.`,
     image: "/Ayush_headshot_orientation.png",
   },
+  {
+  title: "CodePath Technical Interview Prep Graduate",
+  description: `Successfully completed CodePath’s Intermediate Technical Interview Prep (Spring 2025), sharpening skills in algorithms and problem-solving. Collaborated with peers, built strong technical foundations, and expanded my professional network.`,
+  image: "/codepath_certificate.png",
+  }
 ];
 
 
