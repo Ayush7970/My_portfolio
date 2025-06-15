@@ -1,12 +1,108 @@
-# React + Vite
+# <img src="https://my-portfolio-green-psi-36.vercel.app/headshot2.png" alt="Ayush Bhardwaj Logo" width="100" style="border-radius: 50%"/> Ayush Bhardwaj's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=brightgreen&up_message=online&url=https%3A%2F%2Fmy-portfolio-green-psi-36.vercel.app)](https://my-portfolio-green-psi-36.vercel.app)
+[![Vite](https://img.shields.io/badge/Built%20With-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Website
 
-## Expanding the ESLint configuration
+👉 **[Visit My Portfolio](https://my-portfolio-green-psi-36.vercel.app)**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📑 Table of Contents
+
+- [About the Project](#about-the-project)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Folder Structure](#folder-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## 🌟 About the Project
+
+This is a fully responsive **personal portfolio website** built using **React + Vite**. It showcases my:
+
+- professional experience,
+- project highlights,
+- hackathon achievements,
+- leadership activities,
+- and technical skills.
+
+The site is designed for **performance**, **clean code**, and **modern UI/UX principles**, with smooth animations, dynamic filters, and mobile-first responsiveness.
+
+---
+
+## ⚙ Tech Stack
+
+- **React 18**
+- **Vite**
+- **React Router**
+- **Lucide React Icons**
+- **TypeAnimation**
+- **Custom CSS (utility-first)**
+
+---
+
+## ✨ Features
+
+✅ Smooth routing with `react-router-dom`  
+✅ Typewriter animated titles (TypeAnimation)  
+✅ Dynamic project filtering by tech stack  
+✅ External links to GitHub, LinkedIn, and resume  
+✅ Hackathon award highlighting  
+✅ Lazy loading and Intersection Observer animations  
+✅ Responsive design (mobile, tablet, desktop)  
+✅ Modern clean UI with dark theme  
+✅ Downloadable resume  
+
+---
+
+## 🖼 Screenshots
+
+### 👋 Hero Section  
+<img src="https://my-portfolio-green-psi-36.vercel.app/headshot2.png" alt="Hero" width="120">
+
+### 💻 Project Card Example  
+<img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tariffarm Project" width="300">
+
+### 📂 Portfolio Cards  
+<img src="https://images.pexels.com/photos/6693657/pexels-photo-6693657.jpeg?auto=compress&fit=crop&w=600" alt="Finance Visualizer" width="300">
+
+---
+
+## 📁 Folder Structure
+
+```plaintext
+src/
+├── components/
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   ├── ExperienceSection.jsx
+│   ├── Footer.jsx
+│   ├── Hackathon.jsx
+│   ├── Hero.jsx
+│   ├── Leadership.jsx
+│   ├── Navbar.jsx
+│   ├── Portfolio.jsx
+│   ├── Projects.jsx
+│   ├── Skills.jsx
+│   └── TechCarousel.jsx
+├── App.jsx
+├── App.css
+├── main.jsx
+public/
+├── headshot2.png
+├── experience.png
+├── myproject.png
+├── activities.png
+├── Ayush_Bhardwaj_Resume.pdf
