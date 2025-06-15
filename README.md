@@ -65,10 +65,10 @@ The site is designed for **performance**, **clean code**, and **modern UI/UX pri
 ## 🖼 Screenshots
 
 ### 👋 Hero Section  
-<img src="https://my-portfolio-green-psi-36.vercel.app/headshot2.png" alt="Hero" width="120">
+<img src="/headshot2.png" alt="Hero" width="120">
 
 ### 💻 Project Card Example  
-<img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tariffarm Project" width="300">
+<img src="https://my-portfolio-green-psi-36.vercel.app/project_page.png" alt="cards image" width="300">
 
 ### 📂 Portfolio Cards  
 <img src="https://images.pexels.com/photos/6693657/pexels-photo-6693657.jpeg?auto=compress&fit=crop&w=600" alt="Finance Visualizer" width="300">
