@@ -23,7 +23,7 @@
 
 ---
 
-## 🌟 About the Project
+## About the Project
 
 This is a fully responsive **personal portfolio website** built using **React + Vite**. It showcases my:
 
@@ -48,7 +48,7 @@ The site is designed for **performance**, **clean code**, and **modern UI/UX pri
 
 ---
 
-## ✨ Features
+## Features
 
 ✅ Smooth routing with `react-router-dom`  
 ✅ Typewriter animated titles (TypeAnimation)  
@@ -62,20 +62,20 @@ The site is designed for **performance**, **clean code**, and **modern UI/UX pri
 
 ---
 
-## 🖼 Screenshots
+## Screenshots
 
 ### 👋 Hero Section  
-<img src="https://my-portfolio-green-psi-36.vercel.app/Hero_section.png" alt="Hero" width="120">
+<img src="https://my-portfolio-green-psi-36.vercel.app/Hero_section.png" alt="Hero" width="300">
 
 ### 💻 Project Card Example  
 <img src="https://my-portfolio-green-psi-36.vercel.app/project_page.png" alt="cards image" width="300">
 
-### 📂 Portfolio Cards  
-<img src="https://my-portfolio-green-psi-36.vercel.app/Portfolio_section.png" alt="Finance Visualizer" width="300">
+### 📂 Co-Curricular Cards Example
+<img src="https://my-portfolio-green-psi-36.vercel.app/leadership_section.png" alt="Finance Visualizer" width="300">
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```plaintext
 src/
@@ -107,15 +107,15 @@ public/
 
 ---
 
-## 📫 Contact  
+## Contact  
 **Ayush Bhardwaj**
 
+💼 [LinkedIn](https://linkedin.com/in/ayush--bhardwaj)
 🌐 [Portfolio](https://my-portfolio-green-psi-36.vercel.app)  
 🐙 [GitHub](https://github.com/Ayush7970)  
-💼 [LinkedIn](https://linkedin.com/in/ayush--bhardwaj)
 
 ---
 
-## 📝 License
+## License
 
-e-License — Created by **Ayush Bhardwaj**
+Created by **Ayush Bhardwaj**
