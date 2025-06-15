@@ -19,9 +19,6 @@
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Folder Structure](#folder-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Contributing](#contributing)
 - [Contact](#contact)
 
 ---
@@ -104,3 +101,21 @@ public/
 ├── myproject.png
 ├── activities.png
 ├── Ayush_Bhardwaj_Resume.pdf
+
+```
+
+
+---
+
+## 📫 Contact  
+**Ayush Bhardwaj**
+
+🌐 [Portfolio](https://my-portfolio-green-psi-36.vercel.app)  
+🐙 [GitHub](https://github.com/Ayush7970)  
+💼 [LinkedIn](https://linkedin.com/in/ayush--bhardwaj)
+
+---
+
+## 📝 License
+
+e-License — Created by **Ayush Bhardwaj**
