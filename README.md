@@ -22,7 +22,6 @@
 - [Getting Started](#getting-started)
 - [Available Scripts](#available-scripts)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ---
