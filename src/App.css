@@ -1748,7 +1748,7 @@ body {
 }
 
 .slider-container {
-  position: relative;
+  position: absolute;
   max-width: 900px;
   width: 95vw;
   display: flex;
@@ -1832,34 +1832,20 @@ body {
 
 .slider-nav {
   position: absolute;
-  top: 45%;
-  background: hsl(220, 33%, 12%);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: transparent;
   border: none;
-  border-radius: 50%;
-  width: 46px;
-  height: 46px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
   cursor: pointer;
-  color: #88b4ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.25s ease, color 0.25s ease;
-  user-select: none;
-  z-index: 10;
-}
-
-.slider-nav:hover {
-  background: #3faaff;
-  color: white;
 }
 
 .slider-nav.prev {
-  left: -60px;
+  left: 10px;  /* or any spacing that looks good */
 }
 
 .slider-nav.next {
-  right: -60px;
+  right: 10px;
 }
 
 .slider-dots {

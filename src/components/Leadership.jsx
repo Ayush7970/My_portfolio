@@ -107,14 +107,14 @@ export default function Leadership3DSlider() {
           className="slider-nav prev"
           onClick={goPrev}
         >
-          <ChevronLeft size={44} />
+          <ChevronLeft size={64} />
         </button>
         <button
           aria-label="Next leadership"
           className="slider-nav next"
           onClick={goNext}
         >
-          <ChevronRight size={44} />
+          <ChevronRight size={64} />
         </button>
 
         {/* Dots */}
