@@ -1223,9 +1223,9 @@ body {
 /* Projects Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 340px));
   justify-content: center;
+  gap: 2.2rem;
 }
 
 /* Project Card */
@@ -2175,3 +2175,20 @@ body {
   .carousel-arrow.right { right: -17px; }
 }
 
+
+
+
+
+.project-link {
+  color: #3faaff;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.14s;
+}
+
+.project-link:hover {
+  color: #6ec3ff; /* Optional: change color on hover */
+}
