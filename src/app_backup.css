@@ -1,0 +1,194 @@
+
+/* Projects Section Styles */
+
+
+/* Section Container */
+#projects.section {
+    padding-bottom: 64px;
+  }
+  
+  /* Filter Button Bar */
+  .mb-8.flex.flex-wrap.justify-center.gap-2,
+  .projects-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-bottom: 2.2rem;
+  }
+  
+  .filter-btn {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid #2c3141;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.08rem;
+    transition: all 0.17s;
+    outline: none;
+  }
+  .filter-btn.active,
+  .filter-btn:focus {
+    background: hsl(220,95%,21%);
+    color: #fff;
+    border: 2px solid hsl(220,95%,21%);
+  }
+  
+  
+  .projects-section-underline {
+    display: block;
+    width: 70px;
+    height: 4px;
+    border-radius: 2px;
+    background: #ff9800;
+    margin: 0.5rem auto 1rem auto; /* Top margin, center, bottom margin */
+  }
+  
+  
+  
+  /* Projects Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 340px));
+    justify-content: center;
+    gap: 2.2rem;
+  }
+  
+  /* Project Card */
+  .project-card {
+    background: #232937;
+    border-radius: 18px;
+    box-shadow: 0 3px 24px rgba(0,0,0,0.18);
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.18s, transform 0.18s;
+    cursor: pointer;
+    opacity: 1;
+  }
+  .project-card:hover, .project-card:focus-within {
+    box-shadow: 0 8px 32px rgba(30,40,60,0.20);
+    transform: translateY(-3px) scale(1.022);
+  }
+  
+  /* Card Image */
+  .project-card-image {
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    width: 100%;
+  }
+  .project-card-image img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.28s;
+  }
+  .project-card:hover .project-card-image img {
+    transform: scale(1.045);
+  }
+  
+  /* Card Content */
+  .project-card h3 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  
+  .project-card .project-meta {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #b1b8c9;
+    margin-bottom: 10px;
+    gap: 7px;
+  }
+  
+  .project-card .award-badge {
+    color: #FF9800;
+    font-weight: 600;
+    margin-left: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.97em;
+  }
+  
+  .project-card p {
+    color: #b1b8c9;
+    font-size: 1.01rem;
+    margin-bottom: 13px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    min-height: 3.5em;
+  }
+  
+  /* Tags/Pills */
+  .project-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+  .project-card-tags span {
+    background: #151820;
+    color: #e3e7ed;
+    padding: 5px 14px;
+    font-size: 0.97rem;
+    border-radius: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  
+  /* Bottom Links */
+  .project-card-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  .project-card-links a {
+    color: #3faaff;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.97rem;
+    transition: color 0.14s;
+    gap: 6px;
+  }
+  .project-card-links a:hover {
+    color: #fff;
+  }
+  
+  /* Animation: scale-in */
+  @keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .scale-in {
+    animation: scaleIn 0.3s cubic-bezier(.22,.61,.36,1) both;
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 650px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .portfolio-title {
+      font-size: 2rem;
+    }
+  }
+/* projects css   */

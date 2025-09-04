@@ -33,9 +33,14 @@ const CATEGORIES = [
   { key: "tool", label: "Tools" },
 ];
 
+const MOBILE_QUERY = "(max-width: 640px)";
+const MOBILE_DEFAULT_COUNT = 10;
+
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const sectionRef = useRef(null);
 
   // Filter skills based on category
@@ -44,10 +49,15 @@ const Skills = () => {
       ? SKILLS
       : SKILLS.filter((s) => s.category === activeCategory);
 
-  // Split into 2 columns for desktop
-  const mid = Math.ceil(filteredSkills.length / 2);
-  const leftSkills = filteredSkills.slice(0, mid);
-  const rightSkills = filteredSkills.slice(mid);
+  // Determine which skills to display (mobile caps at 10 unless expanded)
+  const visibleSkills = isMobile
+    ? (showAllMobile ? filteredSkills : filteredSkills.slice(0, MOBILE_DEFAULT_COUNT))
+    : filteredSkills;
+
+  // For desktop: split into 2 columns
+  const mid = Math.ceil(visibleSkills.length / 2);
+  const leftSkills = visibleSkills.slice(0, mid);
+  const rightSkills = visibleSkills.slice(mid);
 
   // Animate on scroll into view
   useEffect(() => {
@@ -63,13 +73,26 @@ const Skills = () => {
     };
   }, []);
 
+  // Track mobile viewport with matchMedia
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Reset mobile "show more" when category changes
+  useEffect(() => {
+    setShowAllMobile(false);
+  }, [activeCategory]);
+
   return (
     <section id="skills" ref={sectionRef} className="section skills-section">
       <div className="container">
         <div className="section-title">
           <h2>Skills</h2>
           <span className="skills-section-title-underline"></span>
-          
         </div>
 
         <div className="skills-filter">
@@ -78,6 +101,8 @@ const Skills = () => {
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={`filter-btn${activeCategory === cat.key ? " active" : ""}`}
+              aria-pressed={activeCategory === cat.key}
+              type="button"
             >
               {cat.label}
             </button>
@@ -85,15 +110,17 @@ const Skills = () => {
         </div>
 
         <div className="skills-bars-grid">
-          {[leftSkills, rightSkills].map((col, colIdx) => (
-            <div className="skills-bars-col" key={colIdx}>
-              {col.map((skill, i) => (
-                <div className="skill-bar-item" key={skill.name}>
+          {isMobile ? (
+            // MOBILE: single column
+            <div className="skills-bars-col">
+              {visibleSkills.map((skill, i) => (
+                <div className="skill-bar-item" key={`${skill.name}-${i}`}>
                   <div className="skill-bar-labels">
                     <span className="skill-name">{skill.name}</span>
                     <span className="skill-level">{skill.level}%</span>
                   </div>
-                  <div className="progress-bar">
+                  <div className="progress-bar" role="progressbar"
+                       aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
                     <div
                       className="progress-bar-fill"
                       style={{
@@ -104,8 +131,65 @@ const Skills = () => {
                   </div>
                 </div>
               ))}
+
+              {/* Show More/Less only on mobile and only if more than 10 exist */}
+              {filteredSkills.length > MOBILE_DEFAULT_COUNT && (
+                <button
+                  type="button"
+                  className="more-btn"
+                  onClick={() => setShowAllMobile((v) => !v)}
+                  aria-expanded={showAllMobile}
+                  aria-controls="skills"
+                >
+                  {showAllMobile ? "Show Less" : `Show More (${filteredSkills.length - MOBILE_DEFAULT_COUNT})`}
+                </button>
+              )}
             </div>
-          ))}
+          ) : (
+            // DESKTOP/TABLET: two columns
+            <>
+              <div className="skills-bars-col">
+                {leftSkills.map((skill, i) => (
+                  <div className="skill-bar-item" key={`${skill.name}-L-${i}`}>
+                    <div className="skill-bar-labels">
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-level">{skill.level}%</span>
+                    </div>
+                    <div className="progress-bar" role="progressbar"
+                         aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
+                      <div
+                        className="progress-bar-fill"
+                        style={{
+                          width: isVisible ? `${skill.level}%` : 0,
+                          transitionDelay: isVisible ? `${i * 100}ms` : "0ms",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="skills-bars-col">
+                {rightSkills.map((skill, i) => (
+                  <div className="skill-bar-item" key={`${skill.name}-R-${i}`}>
+                    <div className="skill-bar-labels">
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-level">{skill.level}%</span>
+                    </div>
+                    <div className="progress-bar" role="progressbar"
+                         aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
+                      <div
+                        className="progress-bar-fill"
+                        style={{
+                          width: isVisible ? `${skill.level}%` : 0,
+                          transitionDelay: isVisible ? `${(i + leftSkills.length) * 100}ms` : "0ms",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

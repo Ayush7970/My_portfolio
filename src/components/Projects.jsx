@@ -48,7 +48,7 @@ const projects = [
     description: 'A GPT-based character-level language model built with PyTorch. The app implements transformer blocks and multi-head attention. It generates high-quality text predictions for various NLP tasks.',
     image: 'https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     tags: ['Python', 'PyTorch', 'ML'],
-    code: 'https://github.com/Ayush7970/chat-nexus',
+    code: 'https://github.com/Ayush7970/learn_llm',
     date: 'July 2024'
   },
   {
@@ -202,39 +202,14 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 440px))',
-          gap: '2.2rem',
-          justifyContent: 'center',
-          
-        }}>
+        <div className="grid">
           {filtered.map((project, i) => (
-            <div key={i} className="project-card" style={{
-              background: '#232937',
-              borderRadius: 18,
-              boxShadow: '0 3px 24px rgba(0,0,0,0.18)',
-              padding: '0 0 18px 0',
-              display: 'flex',
-              flexDirection: 'column',
-              transition: 'box-shadow 0.18s, transform 0.18s',
-              cursor: 'pointer'
-            }}>
-              <div className="project-card-image" style={{
-                borderTopLeftRadius: 18,
-                borderTopRightRadius: 18,
-                overflow: 'hidden',
-                marginBottom: 18
-              }}>
+            <div className="project-card">
+              <div className="project-card-image" >
                 <img
                   src={project.image}
                   alt={project.title}
-                  style={{
-                    width: '100%',
-                    height: 170,
-                    objectFit: 'cover',
-                    display: 'block'
-                  }}
+                  
                 />
               </div>
               <div style={{ padding: '0 1.3rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
