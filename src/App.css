@@ -376,7 +376,7 @@ body {
   position: fixed;
   top: 64px;
   left: 0; right: 0;
-  background: #21242b;
+  background: #1e2532; 
   border-bottom: 1px solid #23272f;
   transform: translateY(-8px);
   opacity: 0;
