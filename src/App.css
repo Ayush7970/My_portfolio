@@ -266,6 +266,182 @@ body {
   border-bottom: 2px solid #ff9800;
 }
 
+/* for phone and other views */
+
+/* Base */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  background: hsl(220, 33%, 9%);
+  border-bottom: 1px solid #23272f;
+  transition: background 0.25s, box-shadow 0.25s;
+  display: flex;
+  align-items: center;
+}
+.navbar.scrolled {
+  background: rgba(22, 24, 29, 0.98);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.navbar-container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: .3px;
+  cursor: pointer;
+}
+
+/* Desktop links */
+.navbar-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.nav-link {
+  background: none;
+  border: none;
+  color: #f7f7f7;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 6px;
+  border-bottom: 2.5px solid transparent;
+  transition: color .16s, border-color .16s;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #ff9800;
+  border-bottom-color: #ff9800;
+}
+
+/* Desktop submenu (hover/focus) */
+.has-submenu { position: relative; }
+.navbar-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #23273a;
+  min-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.24);
+  padding: 8px;
+  display: none;
+}
+.has-submenu:hover .navbar-submenu,
+.has-submenu:focus-within .navbar-submenu {
+  display: block;
+}
+.navbar-submenu .nav-link {
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  border-bottom: 0;
+}
+.navbar-submenu .nav-link:hover { background: #1e2532; color: #ff9800; }
+
+/* Burger */
+.navbar-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+/* Mobile overlay + drawer */
+.navbar-backdrop {
+  position: fixed;
+  inset: 64px 0 0 0;      /* fills screen under the bar */
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+.navbar-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-mobile {
+  position: fixed;
+  top: 64px;
+  left: 0; right: 0;
+  background: #21242b;
+  border-bottom: 1px solid #23272f;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .2s ease, opacity .2s ease;
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px 16px;
+}
+.navbar-mobile.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile items */
+.mobile-link,
+.mobile-sublink,
+.mobile-accordion {
+  background: none;
+  border: none;
+  color: #f7f7f7;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 12px 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 8px;
+}
+.mobile-link:hover,
+.mobile-sublink:hover,
+.mobile-accordion:hover,
+.mobile-link:focus-visible,
+.mobile-sublink:focus-visible,
+.mobile-accordion:focus-visible {
+  background: #1b1f29;
+  outline: none;
+}
+
+.mobile-item {
+  display: grid;
+  grid-template-columns: 1fr auto; /* text + chevron */
+  align-items: center;
+}
+.mobile-accordion { width: auto; padding: 10px; }
+
+/* Collapsible submenu */
+.mobile-submenu {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 6px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .2s ease;
+  padding-left: 8px;
+}
+.mobile-submenu.show { max-height: 240px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar-links { display: none; }
+  .navbar-menu-btn { display: block; }
+}
+
+
 
 
 
@@ -1227,11 +1403,13 @@ body {
   min-width: 0; /* fixes flex children overflowing on tiny screens */
 }
 
-/* Section safety: no horizontal scroll bleed */
-#projects.section { overflow-x: hidden; }
+
+.projects-section { overflow-x: hidden; } 
+
+  
 
 /* Container padding is fine; ensure cards center when fewer columns */
-.grid {
+.projects-section .grid {
   display: grid;
   justify-content: center;
   gap: 2.2rem;
@@ -1240,7 +1418,7 @@ body {
 }
 
 /* Project Card (moved from inline styles) */
-.project-card {
+.projects.section .project-card {
   background: #232937;
   border-radius: 18px;
   box-shadow: 0 3px 24px rgba(0,0,0,0.18);
@@ -1346,26 +1524,6 @@ body {
   }
 }
 
-/* ================== Phones (≤ 650px) ================== */
-@media (max-width: 650px) {
-  /* Center the single-column grid contents */
-  .grid {
-    grid-template-columns: minmax(0, 1fr);
-    justify-content: center;   /* center the track itself */
-    justify-items: center;     /* center items inside the grid cell */
-    align-content: start;      /* don't vertically center the whole list */
-  }
-
-  /* Make each card narrower and centered */
-  .project-card {
-    width: 100%;
-    max-width: calc(100vw - 24px); /* fits screen with 12px side padding */
-    margin-inline: auto;           /* centers the card */
-    align-self: center;            /* extra safety inside grid */
-    border-radius: 14px;
-  }
-}
-
 
 /* ============ Very small phones (≤ 360px) ============ */
 @media (max-width: 360px) {
@@ -1373,6 +1531,188 @@ body {
   .project-card p { font-size: 0.94rem; }
   .project-card-links a { font-size: 0.9rem; }
 }
+
+
+
+
+.projects-section-underline {
+  display: block;
+  width: 140px;
+  height: 6px;
+  border-radius: 3px;
+  background: #ff9800;
+  margin: 8px auto 22px;
+}
+
+/* --- Filter chips: wrap nicely & scale on phones --- */
+.projects-section .filters-wrap  {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;   /* <- center the row */
+  margin: 0 0 30px 0;
+  padding-inline: 8px;
+}
+
+.filter-btn {
+  background: transparent;
+  color: #b1b8c9;
+  border: 1.5px solid #2c3141;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: all 0.17s;
+  line-height: 1;
+  white-space: nowrap;    /* keeps each chip intact */
+  touch-action: manipulation;
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: hsl(220,95%,21%);
+  color: #fff;
+  border-color: hsl(220,95%,21%);
+}
+
+@media (max-width: 420px) {
+  .filter-btn { font-size: 14px; padding: 8px 14px; }
+}
+
+/* --- Card internals pulled from inline styles (keeps things consistent) --- */
+.projects-section .project-card-body {
+  padding: 0 1.1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* prevents overflow with long tech tags */
+}
+
+.project-card-title {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #fff;
+}
+
+.project-card-desc {
+  color: #b1b8c9;
+  font-size: 0.96rem;
+  margin: 0 0 13px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;   /* tidy truncation */
+  overflow: hidden;
+  min-height: 3.2em;
+  word-break: break-word;
+}
+
+/* TechCarousel should never push width */
+.project-card-body .tech-carousel,
+.project-card-body .tech-carousel * {
+  position: relative;        /* arrows position against this */
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;          /* clip anything trying to spill out */
+  padding-right: 34px; 
+  min-width: 0;
+}
+
+/* the horizontal chips row */
+.project-card-body .tech-carousel .tech-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0 8px 0;
+  min-width: 0;
+}
+
+/* arrows stay INSIDE the box */
+.project-card-body .tech-carousel .tech-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);   /* no X-translate! */
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #3faaff;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+}
+
+/* Links row: wraps cleanly on small screens */
+.project-card-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.project-link {
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+/* Card image height tweaked for screen sizes */
+.project-card-image img { height: 170px; }
+@media (max-width: 650px) {
+  .project-card-image img { height: 160px; }
+}
+@media (max-width: 360px) {
+  .project-card-image img { height: 150px; }
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem; }
+}
+@media (max-width: 600px) {
+
+  
+  html { box-sizing: border-box; }              /* set the root to border-box */
+*, *::before, *::after { box-sizing: inherit; }  /* make every element (and pseudo-element) inherit it */
+
+  .project-card-body .tech-carousel { padding-right: 28px; }
+  .project-card-body .tech-carousel .tech-arrow {
+    width: 26px; height: 26px;
+  }
+
+  .projects-section .grid {
+    grid-template-columns: 1fr;
+    display: grid; /* single column */
+    place-items: center;                  /* center cards in the track */
+    align-content: start;
+    gap: 1.4rem;
+  }
+  .projects-section .project-card {
+    width: clamp(300px, 92vw, 560px);     
+    justify-self: center;
+    max-width: calc(100vw - 90px); /* card never bleeds off-screen */
+    margin-inline: auto;
+    border-radius: 14px;
+  }
+}
+
+
+/* Entrance animation (respects reduced motion) */
+@keyframes scaleIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.scale-in { animation: scaleIn 380ms cubic-bezier(.2,.8,.3,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .scale-in { animation: none !important; }
+}
+
+/* Extra safety: prevent long words/URLs from breaking layout */
+.project-card, .project-card * { min-width: 0; box-sizing: border-box; word-break: break-word; }
+
 
 
 /* Experience Section Styles */
@@ -1783,8 +2123,9 @@ body {
 
 /* Leadership Styles */
 .leadership-3d-slider {
-  width: 100vw;
-  min-height: 70vh;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 90vh;
   background: hsl(220, 33%, 9%);
   display: flex;
   justify-content: center;
@@ -1803,6 +2144,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
 }
 
 .images-wrapper {
@@ -1814,6 +2158,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .slider-image {
@@ -1843,6 +2188,7 @@ body {
   left: 0;
   transform-origin: right center;
   cursor: pointer;
+  
 }
 
 .slider-image.right {
@@ -1933,10 +2279,10 @@ body {
     font-size: 0.95rem;
   }
   .slider-nav.prev {
-    left: -40px;
+    left: -20px;
   }
   .slider-nav.next {
-    right: -40px;
+    right: -20px;
   }
   .slider-image {
     max-width: 240px;
@@ -2027,7 +2373,7 @@ body {
 .carousel-section {
   background: hsl(220, 24%, 16%);
   padding: 34px 0 72px 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

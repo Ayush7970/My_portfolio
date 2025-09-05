@@ -123,19 +123,17 @@ const Projects = () => {
   }, [filter]);
 
   useEffect(() => {
-    // Animate cards in on scroll
+    // Animate cards in on scroll (with motion preference respected via CSS)
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('scale-in');
-            }, i * 100);
+            setTimeout(() => entry.target.classList.add('scale-in'), i * 100);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     );
     const cards = sectionRef.current?.querySelectorAll('.project-card');
     cards?.forEach((el) => observer.observe(el));
@@ -143,161 +141,89 @@ const Projects = () => {
   }, [filtered]);
 
   return (
-    <section id="projects" ref={sectionRef} className="section" style={{ minHeight: '100vh' }}>
+    <section id="projects" ref={sectionRef} className="section projects-section">
       <div className="container">
-      <h2 className="portfolio-title" style={{
-            textAlign: 'center',
-            fontWeight: 900,
-            fontSize: '2.2rem',
-            marginBottom: '0.25rem'
-            }}>
-            Projects </h2>
-            <span className="projects-section-underline"></span>
-            <div className="exp-typing">
-            <TypeAnimation
-                sequence={[
-                    "Transforming ideas into impactful projects.", 1500,
-                    "",
-                    400,
-                    "Building solutions, one project at a time.", 1500,
-                    "",
-                    400,
-                    "From hackathons to real-world apps.", 1500,
-                    "",
-                    400,
-                    "Innovating with every line of code.", 1500,
-                    "",
-                    400,
-                    "Showcasing creativity through technology.", 1500,
-                    "",
-                    400,
-                  ]}
-                wrapper="span"
-                speed={45}
-                repeat={Infinity}
-                cursor={true}
-            />
-            </div>
+        <h2 className="portfolio-title" style={{ textAlign: 'center', fontWeight: 900, marginBottom: '0.25rem' }}>
+          Projects
+        </h2>
+        <span className="projects-section-underline"></span>
 
-        <div className="mb-8 flex flex-wrap justify-center gap-2" style={{ marginBottom: 30 }}>
+        <div className="exp-typing">
+          <TypeAnimation
+            sequence={[
+              'Transforming ideas into impactful projects.', 1500, '',
+              400, 'Building solutions, one project at a time.', 1500, '',
+              400, 'From hackathons to real-world apps.', 1500, '',
+              400, 'Innovating with every line of code.', 1500, '',
+              400, 'Showcasing creativity through technology.', 1500, '', 400,
+            ]}
+            wrapper="span"
+            speed={45}
+            repeat={Infinity}
+            cursor
+          />
+        </div>
+
+        {/* Filter Bar */}
+        <div className="filters-wrap">
           {allTags.map(tag => (
             <button
               key={tag}
               onClick={() => setFilter(tag)}
+              aria-pressed={filter === tag}
               className={`filter-btn${filter === tag ? ' active' : ''}`}
-              style={{
-                background: filter === tag ? 'hsl(220,95%,21%)' : 'transparent',
-                color: filter === tag ? '#fff' : '#b1b8c9',
-                border: filter === tag ? '2px solid hsl(220,95%,21%)' : '1.5px solid #2c3141',
-                padding: '10px 22px',
-                borderRadius: 24,
-                fontWeight: 600,
-                cursor: 'pointer',
-                fontSize: 17,
-                transition: 'all 0.17s'
-              }}
             >
               {tag}
             </button>
           ))}
         </div>
 
+        {/* Cards */}
         <div className="grid">
           {filtered.map((project, i) => (
-            <div className="project-card">
-              <div className="project-card-image" >
+            <article className="project-card" key={`${project.title}-${i}`}>
+              <div className="project-card-image">
                 <img
                   src={project.image}
                   alt={project.title}
-                  
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
-              <div style={{ padding: '0 1.3rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 700,
-                  marginBottom: 6,
-                  color: '#fff'
-                }}>{project.title}</h3>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  fontSize: 15,
-                  color: '#b1b8c9',
-                  marginBottom: 10
-                }}>
+
+              <div className="project-card-body">
+                <h3 className="project-card-title">{project.title}</h3>
+
+                <div className="project-meta">
                   <Calendar size={15} style={{ marginRight: 4, marginTop: -2 }} />
                   <span>{project.date}</span>
+
                   {project.award && (
-                    <span style={{
-                      color: '#FF9800',
-                      fontWeight: 600,
-                      marginLeft: 13,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 4
-                    }}>
-                      <Award size={15} style={{ marginRight: 3 }} />
+                    <span className="award-badge">
+                      <Award size={15} />
                       Hackathon Winner
                     </span>
                   )}
                 </div>
-                <p style={{
-                  color: '#b1b8c9',
-                  fontSize: 15.3,
-                  marginBottom: 13,
-                  display: '-webkit-box',
-                  WebkitBoxOrient: 'vertical',
-                  WebkitLineClamp: 3,
-                  overflow: 'hidden'
-                }}>{project.description}</p>
+
+                <p className="project-card-desc">{project.description}</p>
 
                 <TechCarousel tags={project.tags} />
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 15 }}>
-                {project.code && (
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: '#3faaff',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      fontWeight: 600,
-                      textDecoration: 'none',
-                      fontSize: 15,
-                      transition: 'color 0.14s'
-                    }}
-                  >
-                    <Code size={17} style={{ marginRight: 6 }} />
-                    View Code
-                  </a>
-                )}
-
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: '#3faaff',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      fontWeight: 600,
-                      textDecoration: 'none',
-                      fontSize: 15,
-                      transition: 'color 0.14s'
-                    }}
-                  >
-                    <ExternalLink size={17} style={{ marginRight: 6 }} />
-                    Live Demo
-                  </a>
-                )}
+                <div className="project-card-links">
+                  {project.code && (
+                    <a className="project-link" href={project.code} target="_blank" rel="noopener noreferrer">
+                      <Code size={17} /> View Code
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a className="project-link" href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={17} /> Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
-
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

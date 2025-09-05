@@ -51,6 +51,21 @@ export default function Leadership3DSlider() {
       <div className="slider-container">
         {/* Images Container */}
         <div className="images-wrapper">
+        <button
+          aria-label="Previous leadership"
+          className="slider-nav prev"
+          onClick={goPrev}
+        >
+          <ChevronLeft size={64} />
+        </button>
+        <button
+          aria-label="Next leadership"
+          className="slider-nav next"
+          onClick={goNext}
+        >
+          <ChevronRight size={64} />
+        </button>
+        
           {/* Left Image */}
           <motion.img
             key={prevIndex}
@@ -102,20 +117,7 @@ export default function Leadership3DSlider() {
         </div>
 
         {/* Navigation Buttons */}
-        <button
-          aria-label="Previous leadership"
-          className="slider-nav prev"
-          onClick={goPrev}
-        >
-          <ChevronLeft size={64} />
-        </button>
-        <button
-          aria-label="Next leadership"
-          className="slider-nav next"
-          onClick={goNext}
-        >
-          <ChevronRight size={64} />
-        </button>
+        
 
         {/* Dots */}
         <div className="slider-dots" role="tablist" aria-label="Leadership slider pagination">
