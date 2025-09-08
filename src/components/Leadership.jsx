@@ -49,6 +49,15 @@ export default function Leadership3DSlider() {
   return (
     <section className="leadership-3d-slider">
       <div className="slider-container">
+      <h2
+      className="portfolio-title"
+      style={{ textAlign: "center", fontWeight: 900, marginBottom: "0.25rem" }}
+    >
+      Leadership Section 
+    </h2>
+    <span className="projects-section-underline"></span>
+    
+        
         {/* Images Container */}
         <div className="images-wrapper">
         <button
@@ -65,7 +74,7 @@ export default function Leadership3DSlider() {
         >
           <ChevronRight size={64} />
         </button>
-        
+
           {/* Left Image */}
           <motion.img
             key={prevIndex}

@@ -16,6 +16,17 @@ const projects = [
     award: true
   },
   {
+    title: 'ArtSee',
+    description:
+      'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
+    image: 'public/ArtSee1.jpg', // TODO: replace with your hosted image
+    tags: ['React', 'Python', 'uAgents', 'Groq', 'Anthropic', 'LLM', 'Agentic AI'],
+    code: 'https://github.com/Ayush7970/Collab_AI_hack', 
+    demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
+    date: 'June 2025',
+    award: false
+  },
+  {
     title: 'Super Health App',
     description: 'An advanced desktop health assistant built using Python, Tkinter, and SQLite. The app helps track prescriptions, set medication reminders, and locate doctors. It combines mindfulness tools for a holistic health management solution.',
     image: 'https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
