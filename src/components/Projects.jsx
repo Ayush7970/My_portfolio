@@ -2,9 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Code, Award, Calendar } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import TechCarousel from './TechCarousel';
+import artSeeImg from '../../public/ArtSee1.jpg';
+
 
 
 const projects = [
+  {
+    title: 'ArtSee',
+    description:
+      'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
+    image: artSeeImg, // TODO: replace with your hosted image
+    tags: ['React', 'Python', 'uAgents', 'Groq', 'Anthropic', 'LLM', 'Agentic AI'],
+    code: 'https://github.com/Ayush7970/Collab_AI_hack', 
+    demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
+    date: 'June 2025',
+    award: false
+  },
   {
     title: 'Tariffarm',
     description: 'Tariffarm is a full-stack international trade platform that helps users estimate import costs with real-time tariff data. It integrates Flask and React.js for a seamless frontend-backend experience. Interactive trade route maps and Gemini API prompts enhance usability.',
@@ -14,17 +27,6 @@ const projects = [
     demo: 'https://www.youtube.com/watch?v=bZZq8BTu3Vk',
     date: 'April 2025',
     award: true
-  },
-  {
-    title: 'ArtSee',
-    description:
-      'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
-    image: 'public/ArtSee1.jpg', // TODO: replace with your hosted image
-    tags: ['React', 'Python', 'uAgents', 'Groq', 'Anthropic', 'LLM', 'Agentic AI'],
-    code: 'https://github.com/Ayush7970/Collab_AI_hack', 
-    demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
-    date: 'June 2025',
-    award: false
   },
   {
     title: 'Super Health App',
