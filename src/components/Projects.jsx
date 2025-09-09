@@ -11,7 +11,7 @@ const projects = [
     title: 'ArtSee',
     description:
       'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
-    image: artSeeImg, // TODO: replace with your hosted image
+    image: artSeeImg,
     tags: ['React', 'Python', 'uAgents', 'Groq', 'Anthropic', 'LLM', 'Agentic AI'],
     code: 'https://github.com/Ayush7970/Collab_AI_hack', 
     demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
