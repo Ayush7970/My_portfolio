@@ -34,10 +34,12 @@ export default function HackathonCarousel() {
         <div className="carousel-track">
           {hackathonPhotos.map((item, i) => (
             <div className={`carousel-card ${getClass(i)}`} key={i}>
+            <div className="carousel-media">
               <img className="carousel-img" src={item.image} alt={item.title} />
-              <h3 className="carousel-card-title">{item.title}</h3>
-              <div className="carousel-location">{item.location}</div>
             </div>
+            <h3 className="carousel-card-title">{item.title}</h3>
+            <div className="carousel-location">{item.location}</div>
+          </div>
           ))}
         </div>
         <button className="carousel-arrow right" onClick={next} aria-label="Next">
