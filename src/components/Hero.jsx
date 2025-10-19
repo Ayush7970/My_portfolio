@@ -4,6 +4,7 @@ import { FileText } from 'lucide-react';
 
 import { ArrowDownCircle, Github, Linkedin, Mail } from 'lucide-react'; // keep this if you're using lucide-react
 import { TypeAnimation } from 'react-type-animation'; // if you use react-type-animation
+import MolecularBackground from './MolecularBackground'; // Import the background
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -17,10 +18,16 @@ const Hero = () => {
   };
 
   return (
+    <>
+    {/* Add the 3D Molecular Background */}
+    
     <section id="hero" className="hero-container">
+      {/* Background lives ONLY inside hero */}
+      <MolecularBackground />
+       
         <div className="hero-img-wrapper">
         <img
-        src= "/headshot2.png" 
+        src= "/heradshot_convert.jpg" 
         alt="Ayush Bhardwaj"
         className="hero-img"
         />
@@ -80,6 +87,7 @@ const Hero = () => {
         <ArrowDownCircle size={36} />
       </button>
     </section>
+    </>
   );
 };
 
