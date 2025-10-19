@@ -25,7 +25,7 @@ body, #root, .App {
   overflow: hidden;
   min-height: 100vh;          /* full viewport */
   margin-top: calc(-1 * var(--nav-h));             /* pull hero up under navbar */
-  padding-top: calc(var(--nav-h) + clamp(16px,4vh,40px)); /* push content back down */
+  padding-top: calc(var(--nav-h) + clamp(24px, 8vh, 120px));
   padding-inline: 16px;
   display: flex;
   flex-direction: column;
