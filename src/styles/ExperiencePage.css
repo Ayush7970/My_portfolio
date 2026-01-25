@@ -1,0 +1,688 @@
+/* ===============================
+   EXPERIENCE PAGE (NEW THEME MATCH)
+   Paste as ExperiencePage.css (or replace your old experience CSS)
+   IMPORTANT: No inline styles needed now.
+   Works with:
+   .exp-section, .exp-container, .exp-header, .exp-title,
+   .exp-section-underline, .exp-typing, .exp-grid,
+   .exp-card (+ children), .exp-cta-btn,
+   .exp-modal-overlay, .exp-modal (+ children)
+   =============================== */
+
+/* ---------- Tokens (match site theme) ---------- */
+:root {
+  /* Background */
+  --exp-bg: #0b1220;          /* main navy */
+  --exp-bg-2: #070a12;        /* deeper */
+  --exp-gridline: rgba(148, 163, 184, 0.10);
+
+  /* Card */
+  --exp-card: rgba(255, 255, 255, 0.06);
+  --exp-card-strong: rgba(255, 255, 255, 0.09);
+  --exp-border: rgba(148, 163, 184, 0.16);
+  --exp-border-strong: rgba(148, 163, 184, 0.24);
+
+  /* Text */
+  --exp-text: #eaf0ff;
+  --exp-muted: rgba(226, 232, 240, 0.72);
+  --exp-muted-2: rgba(226, 232, 240, 0.55);
+
+  /* Accents */
+  --exp-blue: #60a5fa;
+  --exp-blue-2: #38bdf8;
+
+  /* GOLD (must match underline + button) */
+  --exp-gold-1: #ffcc66;
+  --exp-gold-2: #ffb74d;
+  --exp-gold-3: #ff9800;
+  --exp-gold-4: #f59e0b;
+
+  /* Shadows */
+  --exp-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+  --exp-shadow-hover: 0 28px 90px rgba(0, 0, 0, 0.55);
+
+  /* Radii */
+  --exp-radius: 22px;
+  --exp-radius-sm: 16px;
+}
+
+/* ---------- Section wrapper ---------- */
+.exp-section {
+  position: relative;
+  z-index: 2;
+  padding: 86px 0 110px 0;
+  overflow: hidden;
+}
+
+/* Force same "other pages" feel (dark navy gradient) */
+.exp-section.exp-theme {
+  background: radial-gradient(
+      1200px 700px at 15% 10%,
+      rgba(56, 189, 248, 0.10),
+      rgba(0, 0, 0, 0) 55%
+    ),
+    radial-gradient(
+      900px 600px at 85% 20%,
+      rgba(96, 165, 250, 0.10),
+      rgba(0, 0, 0, 0) 55%
+    ),
+    linear-gradient(180deg, var(--exp-bg) 0%, var(--exp-bg-2) 100%);
+}
+
+/* Container */
+.exp-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Background layers ---------- */
+.exp-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle grid like premium dashboards */
+.exp-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--exp-gridline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--exp-gridline) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.30;
+  mask-image: radial-gradient(circle at 50% 15%, rgba(0,0,0,1), rgba(0,0,0,0) 70%);
+}
+
+/* Glows */
+.exp-bg-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  filter: blur(34px);
+  opacity: 0.55;
+}
+
+.exp-bg-glow-1 {
+  left: -140px;
+  top: 120px;
+  background: radial-gradient(circle, rgba(56,189,248,0.22) 0%, rgba(0,0,0,0) 65%);
+}
+
+.exp-bg-glow-2 {
+  right: -160px;
+  top: 260px;
+  background: radial-gradient(circle, rgba(96,165,250,0.22) 0%, rgba(0,0,0,0) 65%);
+}
+
+/* Keep your existing cosmic blobs if you use them elsewhere */
+.cosmic-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.18;
+  pointer-events: none;
+}
+.cosmic-blob1 {
+  width: 380px;
+  height: 380px;
+  left: -120px;
+  bottom: 80px;
+  background: rgba(56, 189, 248, 0.6);
+}
+.cosmic-blob2 {
+  width: 420px;
+  height: 420px;
+  right: -140px;
+  bottom: 20px;
+  background: rgba(96, 165, 250, 0.55);
+}
+
+/* ---------- Header ---------- */
+.exp-header {
+  text-align: center;
+  margin-bottom: 2.3rem;
+  padding: 0 8px;
+}
+
+.exp-title,
+.exp-header h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.2px;
+  margin: 0 0 10px 0;
+}
+
+/* Gold underline */
+.exp-section-underline {
+  display: block;
+  width: 210px;
+  height: 5px;
+  border-radius: 999px;
+  margin: 0.55rem auto 1.2rem auto;
+  background: linear-gradient(90deg, var(--exp-gold-2), var(--exp-gold-3));
+  box-shadow:
+    0 10px 28px rgba(255, 152, 0, 0.18),
+    0 0 0 1px rgba(255, 152, 0, 0.10) inset;
+  transform-origin: center;
+}
+
+/* Typing line */
+.exp-typing {
+  color: #1e90ff;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+/* ---------- Grid ---------- */
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.9rem;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+/* ===============================
+   CARD (Premium)
+   =============================== */
+.exp-card,
+.exp-card * {
+  box-sizing: border-box;
+}
+
+.exp-card {
+  position: relative;
+  border-radius: var(--exp-radius);
+  padding: 22px 22px 78px 22px; /* ✅ extra bottom padding for pinned footer */
+  min-height: 210px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 100%),
+    rgba(255,255,255,0.03);
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  box-shadow: 0 12px 42px rgba(10, 14, 30, 0.55);
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+/* Decorative glow/border layers */
+.exp-card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--exp-radius);
+  background: radial-gradient(
+      circle at 20% 10%,
+      rgba(56, 189, 248, 0.18),
+      rgba(0, 0, 0, 0) 55%
+    );
+  opacity: 0.0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.exp-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--exp-radius);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 152, 0, 0.0),
+    rgba(255, 152, 0, 0.10),
+    rgba(56, 189, 248, 0.10),
+    rgba(255, 152, 0, 0.0)
+  );
+  opacity: 0.0;
+  transition: opacity 220ms ease;
+  mix-blend-mode: screen;
+}
+
+.exp-card:hover,
+.exp-card:focus-within {
+  border-color: rgba(96, 165, 250, 0.30);
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.55),
+    0 18px 60px rgba(56, 189, 248, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.055) 100%),
+    rgba(255,255,255,0.03);
+}
+
+.exp-card:hover .exp-card-glow,
+.exp-card:focus-within .exp-card-glow {
+  opacity: 1;
+}
+
+.exp-card:hover .exp-card-border,
+.exp-card:focus-within .exp-card-border {
+  opacity: 1;
+}
+
+/* Header inside card */
+.exp-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.exp-card-title {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+/* meta row */
+.exp-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.exp-card-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #74b7ff;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.exp-card-company {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(96,165,250,0.18);
+  background: rgba(59,130,246,0.10);
+  color: rgba(234, 242, 255, 0.92);
+  font-weight: 800;
+  font-size: 0.86rem;
+}
+
+/* Preview text (clamped) */
+.exp-card-preview {
+  margin: 10px 0 16px 0;
+  color: rgba(226, 232, 240, 0.82);
+  line-height: 1.6;
+  font-size: 0.98rem;
+  position: relative;
+  z-index: 2;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.exp-card-preview--muted {
+  color: rgba(226, 232, 240, 0.62);
+}
+
+/* Footer pinned at bottom (badge + CTA stay same row) */
+.exp-card-footer {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 18px;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 2;
+}
+
+/* Badge */
+.exp-card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148,163,184,0.16);
+  color: rgba(234, 242, 255, 0.88);
+  font-weight: 900;
+  font-size: 0.84rem;
+}
+
+.exp-card-badge--subtle {
+  color: rgba(234, 242, 255, 0.68);
+}
+
+/* ===============================
+   CTA BUTTON (Explore More) — GOLD
+   =============================== */
+.exp-cta-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 950;
+  font-size: 15px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #0b1220;
+  background: linear-gradient(180deg, var(--exp-gold-1) 0%, var(--exp-gold-3) 55%, var(--exp-gold-4) 100%);
+  box-shadow:
+    0 12px 30px rgba(255, 152, 0, 0.22),
+    0 0 0 1px rgba(255, 152, 0, 0.12) inset;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.exp-cta-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow:
+    0 18px 44px rgba(255, 152, 0, 0.28),
+    0 0 0 1px rgba(255, 152, 0, 0.16) inset;
+}
+
+.exp-cta-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.exp-cta-btn:focus-visible {
+  outline: 2px solid rgba(255, 152, 0, 0.75);
+  outline-offset: 3px;
+}
+
+/* ===============================
+   MODAL (Premium, theme-matching)
+   =============================== */
+.exp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.exp-modal {
+  width: min(920px, 100%);
+  max-height: 86vh;
+  overflow: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(96, 165, 250, 0.20);
+  background:
+    radial-gradient(800px 450px at 20% 0%, rgba(56, 189, 248, 0.12), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.965) 0%, rgba(2, 6, 23, 0.965) 100%);
+  box-shadow: 0 34px 110px rgba(0, 0, 0, 0.65);
+  padding: 18px;
+  position: relative;
+}
+
+/* Gold top line (ties to underline + button) */
+.exp-modal-topline {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 16px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,183,77,0), rgba(255,152,0,0.9), rgba(255,183,77,0));
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Modal header */
+.exp-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  padding: 14px 2px 14px 2px;
+  margin-bottom: 14px;
+}
+
+.exp-modal-heading {
+  min-width: 0;
+}
+
+.exp-modal-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.exp-modal-title {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: 0.2px;
+}
+
+.exp-modal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  background: rgba(59, 130, 246, 0.10);
+  color: #cfe6ff;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.exp-modal-company {
+  margin-top: 10px;
+  color: #7dd3fc;
+  font-weight: 900;
+}
+
+/* Close button */
+.exp-modal-close {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.60);
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exp-modal-close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(96, 165, 250, 0.26);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.exp-modal-close:focus-visible {
+  outline: 2px solid rgba(96, 165, 250, 0.55);
+  outline-offset: 3px;
+}
+
+/* Modal body */
+.exp-modal-body {
+  display: grid;
+  gap: 16px;
+}
+
+/* Modal sections */
+.exp-modal-section {
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(30, 41, 59, 0.22);
+  padding: 14px;
+}
+
+.exp-modal-section-title {
+  color: #93c5fd;
+  font-weight: 950;
+  font-size: 12.8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.exp-modal-text {
+  margin: 0;
+  color: #f1f5f9;
+  line-height: 1.65;
+  font-size: 15.4px;
+}
+
+/* Achievements list */
+.exp-modal-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.exp-modal-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #e2e8f0;
+  font-size: 15.2px;
+  line-height: 1.55;
+}
+
+/* check icon */
+.exp-check-icon {
+  color: #22c55e;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Actions row */
+.exp-modal-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.exp-modal-secondary {
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 950;
+  font-size: 14.8px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.60);
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.exp-modal-secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(96, 165, 250, 0.26);
+  background: rgba(15, 23, 42, 0.82);
+}
+
+.exp-modal-secondary:focus-visible {
+  outline: 2px solid rgba(96, 165, 250, 0.55);
+  outline-offset: 3px;
+}
+
+/* ===============================
+   MOBILE
+   =============================== */
+@media (max-width: 600px) {
+  .exp-section {
+    padding: 72px 0 92px 0;
+  }
+
+  .exp-title,
+  .exp-header h2 {
+    font-size: 2.05rem;
+  }
+
+  .exp-card {
+    border-radius: 18px;
+    padding: 16px 14px 74px 14px; /* ✅ bottom padding for pinned footer (mobile) */
+    min-height: 200px;
+  }
+
+  .exp-card-glow,
+  .exp-card-border {
+    border-radius: 18px;
+  }
+
+  .exp-card-title {
+    font-size: 1.12rem;
+  }
+
+  .exp-card-preview {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .exp-card-footer {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .exp-cta-btn {
+    border-radius: 12px;
+    padding: 11px 12px;
+    font-size: 14.8px;
+  }
+
+  .exp-modal {
+    border-radius: 18px;
+    padding: 14px;
+    max-height: 88vh;
+  }
+
+  .exp-modal-title {
+    font-size: 18px;
+  }
+
+  .exp-modal-text,
+  .exp-modal-list li {
+    font-size: 14.8px;
+  }
+}
+
+/* Optional: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .exp-card,
+  .exp-cta-btn,
+  .exp-modal-close,
+  .exp-modal-secondary {
+    transition: none !important;
+  }
+}

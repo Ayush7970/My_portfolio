@@ -8,13 +8,24 @@ import Portfolio from './components/Portfolio';
 import Skill from './components/Skills';
 import Hackathon from './components/hackathon'; // Create this if not present
 import './App.css';
-// import { Contact } from 'lucide-react';
+import './styles/Hero.css';
+import './styles/About.css';
+import './styles/PortfolioSection.css';
+import './styles/SkillsSection.css';
+import './styles/HackathonSection.css';
+import './styles/Navbar.css';
+import './styles/ProjectPage.css';
+import './styles/ExperiencePage.css';
+import './styles/LeadershipPage.css';
+import './styles/ContactSection.css';
+
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
+import CurrentPage from './components/CurrentPage';
 import Experience from './components/ExperienceSection';
 import Projects from './components/Projects';
 import Activities from './components/Leadership'; // Create this if not present
+import ScrollToTop from './components/ScrollToTop';
 
 function Home() {
   return (
@@ -35,8 +46,10 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/current" element={<CurrentPage />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/activities" element={<Activities />} />

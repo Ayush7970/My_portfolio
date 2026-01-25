@@ -1,5 +1,7 @@
 import React from 'react';
 import { FileText } from 'lucide-react';
+import WorkPopup from "./WorkPopup";
+
 
 
 import { ArrowDownCircle, Github, Linkedin, Mail } from 'lucide-react'; // keep this if you're using lucide-react
@@ -86,7 +88,13 @@ const Hero = () => {
       >
         <ArrowDownCircle size={36} />
       </button>
+      <WorkPopup
+        href="/current"
+        message="Want to see what I'm currently working on?"
+        cta="View"
+      />
     </section>
+    
     </>
   );
 };

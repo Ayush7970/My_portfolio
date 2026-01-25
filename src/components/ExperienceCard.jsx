@@ -1,204 +1,240 @@
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
-import { Calendar, ExternalLink, CheckCircle } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, X, CheckCircle, ArrowUpRight } from "lucide-react";
 
 const ExperienceCard = ({ experience, index }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
+  const [open, setOpen] = useState(false);
 
-  // 3D tilt effect
-  const handleMouseMove = (e) => {
-    if (!cardRef.current || isFlipped) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateXVal = ((y - centerY) / centerY) * -8;
-    const rotateYVal = ((x - centerX) / centerX) * 8;
-    setRotateX(rotateXVal);
-    setRotateY(rotateYVal);
-  };
-  const handleMouseLeave = () => {
-    if (!isFlipped) {
-      setRotateX(0);
-      setRotateY(0);
-    }
-  };
+  const openBtnRef = useRef(null);
+  const closeBtnRef = useRef(null);
+  const dialogRef = useRef(null);
 
-  // Framer Motion variants
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay: index * 0.14 }
-    }
-  };
-  const flipVariants = {
-    front: { rotateY: 0, transition: { duration: 0.42, ease: "easeOut" }},
-    back: { rotateY: 180, transition: { duration: 0.42, ease: "easeOut" }},
-  };
+  // Close on ESC + basic focus trap when modal is open
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setOpen(false);
+
+      // Focus trap inside dialog
+      if (e.key === "Tab" && dialogRef.current) {
+        const focusables = dialogRef.current.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // focus close button on open
+    const t = setTimeout(() => closeBtnRef.current?.focus(), 50);
+
+    return () => {
+      clearTimeout(t);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  // Return focus to the trigger button on close
+  useEffect(() => {
+    if (!open) openBtnRef.current?.focus();
+  }, [open]);
+
+  const cardVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 26 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.55, delay: index * 0.12, ease: "easeOut" },
+      },
+    }),
+    [index]
+  );
+
+  const shortDescription =
+    typeof experience.description === "string" && experience.description.trim().length
+      ? experience.description.trim()
+      : "";
+
+  const achievementCount =
+    Array.isArray(experience.achievements) ? experience.achievements.length : 0;
 
   return (
-    <motion.div
-      ref={cardRef}
-      className="exp-card"
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <motion.div
-        className="exp-card-inner"
-        animate={isFlipped ? "back" : "front"}
-        variants={flipVariants}
-        style={{ transformStyle: "preserve-3d", width: "100%", height: "100%" }}
-        onClick={() => setIsFlipped((f) => !f)}
-        tabIndex={0}
+    <>
+      {/* CARD */}
+      <motion.article
+        className="exp-card"
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        whileHover={{
+          y: -10,
+          scale: 1.01,
+          transition: { duration: 0.22, ease: "easeOut" },
+        }}
       >
-        {/* FRONT */}
-        <motion.div
-          className="exp-card-front"
-          style={{
-            transformStyle: "preserve-3d",
-            transform: !isFlipped
-              ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
-              : "",
-          }}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="exp-card-header">
-            <h3 className="exp-card-title">{experience.title}</h3>
-            <span className="exp-card-date">
-              <Calendar size={16} style={{ marginRight: 6 }} />
-              {experience.date}
-            </span>
-          </div>
-          <a
-            className="exp-card-company"
-            href={experience.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
+        {/* Decorative layers for CSS (glow/border) */}
+        <div className="exp-card-glow" aria-hidden="true" />
+        <div className="exp-card-border" aria-hidden="true" />
+
+        <header className="exp-card-header">
+        <h3 className="exp-card-title">{experience.title}</h3>
+
+        <div className="exp-card-meta">
+          <span className="exp-card-date">
+            <Calendar size={16} />
+            {experience.date}
+          </span>
+
+          {experience.company ? (
+            <span className="exp-card-company">{experience.company}</span>
+          ) : null}
+        </div>
+      </header>
+
+
+        {/* Optional preview text (CSS will clamp nicely later) */}
+        {shortDescription ? (
+          <p className="exp-card-preview">{shortDescription}</p>
+        ) : (
+          <p className="exp-card-preview exp-card-preview--muted">
+            Highlights and impact details inside.
+          </p>
+        )}
+
+        <div className="exp-card-footer">
+          {achievementCount > 0 ? (
+            <span className="exp-card-badge">{achievementCount} highlights</span>
+          ) : (
+            <span className="exp-card-badge exp-card-badge--subtle">Details inside</span>
+          )}
+
+          <motion.button
+            ref={openBtnRef}
+            type="button"
+            className="exp-cta-btn"
+            onClick={() => setOpen(true)}
+            whileTap={{ scale: 0.98 }}
           >
-            {experience.company}
-          </a>
-          <div className="exp-card-desc" style={{ margin: "14px 0 10px 0", color: "#fff" }}>
-            {experience.description.length > 220
-              ? experience.description.slice(0, 115) + "..."
-              : experience.description}
-          </div>
-          {/* View Details hint */}
-          <div style={{
-            position: "absolute",
-            bottom: 18,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "auto",
-            zIndex: 10,
-            display: "flex",
-            justifyContent: "center"
-            }}>
-            <div
-                className="exp-view-details-btn"
-                style={{
-                background: "#ff9800",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: 15.5,
-                borderRadius: 22,
-                padding: "9px 36px",
-                display: "flex",
-                alignItems: "center",
-                boxShadow: "0 2px 18px rgba(255,152,0,0.14)",
-                userSelect: "none",
-                pointerEvents: "none", // Makes button unclickable, since whole card flips
-                fontFamily: "inherit",
-                letterSpacing: 0.04,
-                border: "none",
-                outline: "none"
-                }}
-            >
-                View Details
-                <svg width="19" height="19" style={{ marginLeft: 9 }}>
-                <path d="M6 9.5h7M11 7l2.5 2.5-2.5 2.5" stroke="#fff" strokeWidth="2.3" fill="none" strokeLinecap="round" />
-                </svg>
-            </div>
-            </div>
-        </motion.div>
-        {/* BACK */}
-        <motion.div
-          className="exp-card-back"
-          style={{
-            transform: "rotateY(180deg)"
-          }}
-          onClick={(e) => { e.stopPropagation(); setIsFlipped(false); }}
-        >
-          <div className="exp-card-header" style={{ marginBottom: 10 }}>
-            <h3 className="exp-card-title">{experience.title}</h3>
-            <a
-              href={experience.link}
-              onClick={e => e.stopPropagation()}
-              className="exp-card-external"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="External Link"
-              style={{ marginLeft: "auto", color: "#3faaff" }}
-            >
-              <ExternalLink size={18} />
-            </a>
-          </div>
-          <div className="exp-card-achievements">
-            <span
-              style={{
-                color: "#1e90ff",
-                fontWeight: 700,
-                fontSize: 15.5,
-                display: "inline-flex",
-                alignItems: "center",
-                marginBottom: 6,
-              }}
-            >
-              Key Achievements
-            </span>
-            <ul className="exp-achieve-list" style={{ margin: 0, padding: 0 }}>
-              {experience.achievements.map((item, idx) => (
-                <li
-                  key={idx}
-                  style={{
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    marginBottom: 7,
-                    fontSize: 15.3,
-                    fontWeight: 500
-                  }}
-                >
-                  <CheckCircle size={16} style={{ color: "#20c997" }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div
-            style={{
-              color: "#3faaff",
-              fontSize: 13.2,
-              fontWeight: 400,
-              marginTop: 20,
-              opacity: 0.85,
-              letterSpacing: 0.02,
+            <span>Explore More</span>
+            <ArrowUpRight size={18} />
+          </motion.button>
+        </div>
+      </motion.article>
+
+      {/* MODAL */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="exp-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            onMouseDown={(e) => {
+              if (e.target === e.currentTarget) setOpen(false);
             }}
           >
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+            <motion.div
+              ref={dialogRef}
+              className="exp-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${experience.title} details`}
+              initial={{ opacity: 0, y: 16, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 14, scale: 0.985 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+            >
+              <div className="exp-modal-topline" aria-hidden="true" />
+
+              {/* HEADER */}
+              <div className="exp-modal-header">
+                <div className="exp-modal-heading">
+                  <div className="exp-modal-title-row">
+                    <h2 className="exp-modal-title">{experience.title}</h2>
+                    <span className="exp-modal-pill">
+                      <Calendar size={14} />
+                      {experience.date}
+                    </span>
+                  </div>
+
+                  {experience.company ? (
+                    <div className="exp-modal-company">{experience.company}</div>
+                  ) : null}
+                </div>
+
+                <button
+                  ref={closeBtnRef}
+                  type="button"
+                  className="exp-modal-close"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close modal"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* BODY */}
+              <div className="exp-modal-body">
+                {experience.description ? (
+                  <section className="exp-modal-section">
+                    <div className="exp-modal-section-title">Overview</div>
+                    <p className="exp-modal-text">{experience.description}</p>
+                  </section>
+                ) : null}
+
+                {Array.isArray(experience.achievements) && experience.achievements.length > 0 ? (
+                  <section className="exp-modal-section">
+                    <div className="exp-modal-section-title">Key achievements</div>
+                    <ul className="exp-modal-list">
+                      {experience.achievements.map((item, idx) => (
+                        <li key={idx}>
+                          <CheckCircle size={18} className="exp-check-icon" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ) : null}
+
+                <div className="exp-modal-actions">
+                  <button
+                    type="button"
+                    className="exp-modal-secondary"
+                    onClick={() => setOpen(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

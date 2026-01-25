@@ -1,0 +1,425 @@
+
+
+/* Contact Section Styles (left as-is except fix a small typo if you want) */
+#contact.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem; /* was 'rem' */
+  background: hsl(220, 24%, 16%);
+}
+
+@media (max-width: 640px) {
+  #contact.section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+
+/* Info Column */
+.contact-info-list .icon-bg {
+  background: hsla(var(--primary), 0.08);
+  color: hsl(var(--primary));
+  border-radius: 9999px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.contact-info-list h4 {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.contact-info-list a,
+.contact-info-list span {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+.contact-info-list a:hover {
+  color: hsl(var(--primary));
+}
+
+/* Form Card */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(20,28,38,0.08);
+  padding: 2rem 1.5rem;
+  border: 1.5px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .card {
+    padding: 1.25rem 0.8rem;
+  }
+}
+
+/* Inputs and Textarea */
+.input {
+  background: var(--background);
+  border: 1.5px solid var(--input);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: var(--foreground);
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border-color: hsl(var(--primary));
+  outline: none;
+}
+
+.input[disabled] {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Error borders */
+.input.border-red-500 {
+  border-color: #ef4444 !important;
+}
+
+/* Send Button */
+.btn-primary {
+  background: hsl(var(--primary));
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: hsl(var(--primary-light));
+}
+
+/* Spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}
+
+/* Success Check Animation */
+.bg-green-100 {
+  background: #d1fae5;
+}
+.text-green-600 {
+  color: #16a34a;
+}
+
+/* Responsive Grid */
+@media (max-width: 900px) {
+  #contact .grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+
+
+
+
+
+:root {
+  --primary: #316ff6;
+  --primary-light: #5594ff;
+  --accent: #ff9800;
+  --background: #181b23;
+  --card: #23272f;
+  --input: #23272f;
+  --border: #444447;
+  --muted-foreground: #fafcff;
+  --error: #ef4444;
+}
+
+/* Section Background */
+.contact-section {
+  background: hsl(220, 24%, 16%);
+  color: #fff;
+  padding: 30px 0 64px 0;
+}
+
+/* Title */
+.contact-title {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.contact-title h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+.contact-title span {
+
+  display: block;
+  width: 100px;
+  height: 5px;
+  border-radius: 2px;
+  background: #ff9800;
+  margin: 4px auto 24px auto; /* 2px top, 24px bottom */
+
+
+}
+
+.contact-content {
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.contact-container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px;
+}
+
+/* Info */
+.contact-info {
+  flex: 1 1 2px;
+  min-width: 260px;
+  max-width: 500px;
+}
+.contact-info h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.contact-info p {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.contact-icon {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.contact-info-item h4 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+.contact-info-item a,
+.contact-info-item span {
+  font-size: 0.99rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+}
+.contact-info-item a:hover {
+  color: var(--primary);
+}
+
+/* Form Card */
+.contact-form-card {
+  background: hsl(220, 33%, 9%);
+  border-radius: 10px;
+  box-shadow: 0 2px 18px 0 rgba(30,40,60,0.07);
+  padding: 38px 50px 30px 28px;
+  flex: 1 1 340px;
+  min-width: 300px;
+  max-width: 600px;
+  border: 1.5px solid var(--border);
+  transition: box-shadow .18s;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-group {
+  margin-bottom: 4px;
+}
+.form-group label {
+  display: block;
+  font-size: 0.99rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.required {
+  color: var(--error);
+  font-size: 1.04rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: hsl(220, 24%, 16%);
+  border: 1.5px solid var(--border);
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px 13px;
+  border-radius: 7px;
+  width: 100%;
+  margin-top: 1px;
+  outline: none;
+  resize: none;
+  transition: border 0.17s;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: block;     /* avoids inline quirks */
+  min-width: 0;       /* prevents flex overflow on some browsers */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+}
+
+
+.input-error {
+  border-color: var(--error) !important;
+}
+
+.error-msg {
+  margin-top: 4px;
+  font-size: 0.94rem;
+  color: var(--error);
+  min-height: 18px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #fff;      /* White placeholder for dark background */
+  opacity: 1;       /* Fully opaque */
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+
+
+.contact-btn {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.07rem;
+  border: none;
+  padding: 13px 0;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.16s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+.contact-btn:hover,
+.contact-btn:focus {
+  background: var(--primary-light);
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+  margin-right: 10px;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Thank You Message */
+.contact-thankyou {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  text-align: center;
+}
+.contact-thankyou h3 {
+  font-size: 1.32rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.contact-thankyou p {
+  color: var(--muted-foreground);
+  font-size: 1.02rem;
+}
+.checkmark-bg {
+  width: 56px; height: 56px;
+  background: #16a34a22;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-content {
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .contact-form-card {
+    max-width: 100%;
+  }
+
+  
+}
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 0 8px;
+  }
+  .contact-title h2 { font-size: 1.5rem;}
+  .contact-form-card { padding: 18px 7px 18px 7px;}
+}
+
+
+
+/* Keep mobile stacking clean */
+@media (max-width: 900px){
+  .contact-content{ align-items:stretch; }  /* normal stacking on small screens */
+  .contact-info{ text-align:left; align-items:flex-start; }
+  .contact-info-item{ justify-content:flex-start; }
+
+  /* Let the Get in touch column use full width */
+.contact-info{
+  flex: 1 1 450px;     /* grow nicely next to the form */
+  min-width: 260px;
+  max-width: none;     /* <— remove the 500px cap */
+  align-items: stretch;/* <— let children take full width */
+  text-align: left;    /* keep text left-aligned */
+}
+
+/* Make the rows span the width instead of centering */
+.contact-info-list{
+  align-items: flex-start;
+}
+.contact-info-item{
+  justify-content: flex-start;
+}
+
+}
+
+
+
+

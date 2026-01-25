@@ -1,6 +1,23 @@
 export const experienceData = [
+  {
+  id: 1,
+  title: "Software Engineering Intern",
+  company: "Invision Capital",
+  companyColor: "#f4c542", // invision gold (keep your theme consistent)
+  date: "2025", // update with exact months if you want
+  description:
+    "Built and shipped internal automation and web solutions for a private equity firm. Rebuilt the firm website in Webflow with CMS, implemented analytics, and created workflow automations that reduced manual deal-cycle work. Developed components of a fixed-asset management system with robust depreciation support.",
+  link: "https://www.invcg.com/",
+  achievementsTitle: "Impact & Achievements",
+  achievements: [
+    "Rebuilt and maintained the company website in Webflow with CMS-driven pages for faster updates and cleaner content ops",
+    "Implemented GA4 + Tag Manager and improved lead capture and routing workflows through Attio CRM integrations",
+    "Built n8n automations and contributed to a Fixed Asset Management app (React/Vite/Tailwind + Flask + MySQL) supporting 7+ depreciation methods"
+  ],
+  icon: "invision"
+},
     {
-      id: 1,
+      id: 2,
       title: "Lead Web Developer",
       company: "Engineering Administration at UIC",
       companyColor: "#3faaff", // site blue
@@ -16,7 +33,7 @@ export const experienceData = [
       icon: "lead"
     },
     {
-      id: 2,
+      id: 3,
       title: "Head Teaching Assistant (Adv. Data Structures & Algorithms)",
       company: "College of Engineering at UIC",
       companyColor: "#3faaff",
@@ -32,7 +49,7 @@ export const experienceData = [
       icon: "teacher"
     },
     {
-      id: 3,
+      id: 4,
       title: "Web Developer",
       company: "Education Department at UIC",
       companyColor: "#3faaff",
@@ -47,7 +64,7 @@ export const experienceData = [
       icon: "web"
     },
     {
-      id: 4,
+      id: 5,
       title: "Computer Specialist",
       company: "Richard J. Daley Library (UIC)",
       companyColor: "#3faaff",

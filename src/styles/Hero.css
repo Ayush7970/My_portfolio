@@ -1,0 +1,343 @@
+
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;          /* full viewport */
+  margin-top: calc(-1 * var(--nav-h));             /* pull hero up under navbar */
+  padding-top: calc(var(--nav-h) + clamp(24px, 8vh, 120px));
+  padding-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+/* Orange accent and underline */
+.hero-title .accent {
+  color: #FF9800; /* orange */
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+.hero-title {
+  font-size: 3.3rem;           /* INCREASED */
+  font-weight: 900;            /* More impact */
+  color: #fff;
+  margin-bottom: 1rem;         /* More space */
+  line-height: 1.18;
+  text-align: center;
+  letter-spacing: 0.6px;
+}
+
+.hero-typing {
+  color: #1e90ff;
+  font-size: 2rem;             /* INCREASED */
+  font-weight: 700;
+  margin-bottom: 0rem;         /* More space */
+  min-height: 36px;            /* Larger min height */
+}
+
+.hero-desc {
+  color: #e3e7ed;
+  max-width: 700px;            /* Slightly wider */
+  margin-bottom: 2.7rem;
+  text-align: center;
+  opacity: 0.97;
+  font-size: 1.3rem;           /* INCREASED */
+}
+
+.hero-links {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 3.0rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-btn {
+  display: flex;
+  align-items: center;
+  padding: 1.1rem 2.3rem;      /* Larger button */
+  border-radius: 10px;
+  border: 2.5px solid #3faaff;
+  background: transparent;
+  color: #3faaff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-decoration: none;
+  margin: 0 0.25rem;
+  font-size: 1.2rem;           /* Bigger text */
+}
+
+.hero-btn svg {
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.hero-btn:hover, .hero-btn:focus {
+  background: #3faaff;
+  color: #fff;
+}
+
+
+
+.hero-scroll-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3faaff;
+  margin-top: 2.7rem;
+  font-size: 2.7rem;           /* Larger scroll icon */
+  animation: bounce 1.3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+}
+
+/* ======= HERO IMAGE ========== */
+.hero-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;                /* INCREASED */
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 2rem auto;    /* More space below */
+  background: #181a20;
+  box-shadow: 0 6px 38px rgba(30,40,60,0.15);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 2rem; }
+  .hero-typing { font-size: 1.2rem; min-height: 24px;}
+  .hero-desc { font-size: 1.05rem; }
+  .hero-img-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+  .hero-btn { padding: 0.7rem 1.5rem; font-size: 1rem;}
+  .hero-scroll-btn { font-size: 2rem; }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent; /* Changed from #181b23 */
+  color: #fff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+
+
+
+/* Put hero content above the background */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+.hero-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background fills hero and stays behind */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;              /* don’t block clicks */
+}
+.hero-bg canvas {
+  display: block;                    /* avoids layout quirks */
+  width: 100%;
+  height: 100%;
+}
+
+/* Every direct child of hero (except the bg) is above */
+.hero-container > *:not(.hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep Hero as a stacking context and clip children */
+.hero-container {
+  position: relative;       /* important */
+  overflow: hidden;         /* clip the background to this section */
+}
+
+/* The canvas wrapper inside Hero */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  inset: 0;                 /* fill the hero box */
+  z-index: 0;               /* behind content */
+  pointer-events: none;     /* don't block clicks */
+  background: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 50%, #020617 100%);
+}
+
+
+
+/* pop up */
+/* ===== Premium bottom-right popup (fixed + tighter width) ===== */
+.work-popup {
+  position: fixed !important;
+  right: 22px !important;
+  bottom: 22px !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 99999;
+
+  width: min(320px, calc(100vw - 44px)); /* ✅ less wide */
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  border: 1px solid rgba(96, 165, 250, 0.20);
+  box-shadow:
+    0 26px 80px rgba(0, 0, 0, 0.62),
+    0 0 0 1px rgba(255, 152, 0, 0.10) inset;
+  backdrop-filter: blur(12px);
+
+  transform-origin: bottom right;
+  animation: workPopupIn 420ms cubic-bezier(.2,.8,.25,1) both;
+
+  overflow: hidden;
+  display: block;
+}
+
+.work-popup::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.9;
+  background:
+    radial-gradient(420px 230px at 85% 0%, rgba(255, 152, 0, 0.22), rgba(0,0,0,0) 60%),
+    radial-gradient(360px 210px at 10% 20%, rgba(56, 189, 248, 0.18), rgba(0,0,0,0) 58%);
+  mix-blend-mode: screen;
+}
+
+@keyframes workPopupIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ✅ This guarantees the close button stays at top-right */
+.work-popup-content {
+  position: relative; /* anchor absolute close */
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+
+  /* ✅ create space for X button so text never pushes it down */
+  padding-right: 46px;
+  padding-top: 2px;
+}
+
+.work-popup-text {
+  color: rgba(234, 242, 255, 0.94);
+  font-weight: 850;
+  line-height: 1.35;
+  font-size: 0.98rem;
+  letter-spacing: 0.1px;
+}
+
+/* ✅ Close button: perfect square, not stretched/rectangular */
+.work-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+
+  border-radius: 999px; /* ✅ makes it perfectly round */
+  display: grid;
+  place-items: center;
+  padding: 0;           /* ✅ prevents rectangle stretching */
+  line-height: 0;       /* ✅ keeps icon centered */
+
+  border: 1px solid rgba(148, 163, 184, 0.20);
+  background: rgba(15, 23, 42, 0.62);
+  color: rgba(226, 232, 240, 0.92);
+  cursor: pointer;
+
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.work-popup-close:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.86);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+.work-popup-close svg {
+  display: block;
+}
+
+/* CTA button stays same */
+.work-popup-btn {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 14px;
+  padding: 10px 13px;
+
+  font-weight: 950;
+  font-size: 0.94rem;
+  text-decoration: none;
+
+  color: #0b1220;
+  background: linear-gradient(180deg, #ffcc66 0%, #ff9800 55%, #f59e0b 100%);
+  box-shadow:
+    0 14px 34px rgba(255, 152, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 152, 0, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.work-popup-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 18px 46px rgba(255, 152, 0, 0.30),
+    inset 0 0 0 1px rgba(255, 152, 0, 0.22);
+}
+
+.work-popup-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .work-popup {
+    right: 12px !important;
+    bottom: 12px !important;
+    width: min(320px, calc(100vw - 24px));
+
+  }
+}

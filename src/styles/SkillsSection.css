@@ -1,0 +1,145 @@
+
+
+/* Skills Section Styles */
+
+.skills-section {
+  display: flex;
+  background: hsl(220, 33%, 9%);
+  padding-bottom: 50px;
+  width: 100vw;        /* full viewport width */
+  min-height: 100vh;   /* at least full viewport height */
+  margin: 0;
+  padding-top: 2rem;   /* keep some spacing from top */
+}
+
+.skills-section h2{
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.1rem;
+  margin-top: 5rem;
+}
+
+/* orange line under title */
+.skills-section-title-underline {
+  display: block;
+  width: 50px;
+  height: 5px;
+  border-radius: 2px;
+  background: #ff9800;
+  margin: 4px auto 40px auto;
+}
+
+.skills-filter {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+/* grid defaults (desktop/tablet: two columns) */
+.skills-bars-grid {
+  display: flex;
+  gap: 44px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.skills-bars-col {
+  flex: 1 1 350px;
+  min-width: 220px;
+}
+
+.skill-bar-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 1.07rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.skill-level {
+  font-weight: 600;
+  color: #d6e0f7;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  background: #181c26;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 7px;
+}
+
+.progress-bar-fill {
+  background: #ff9800;
+  height: 100%;
+  border-radius: 8px;
+  width: 0;
+  transition: width 1.1s cubic-bezier(0.61, 0.05, 0.22, 0.98), background 0.2s;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+    max-width: 100%;     /* allow full width */
+  }
+}
+
+/* MOBILE: stack to one column */
+@media (max-width: 640px) {
+  .skills-bars-grid {
+    flex-direction: column;     /* single column */
+    align-items: center;        /* center horizontally */
+  }
+
+  .skills-bars-col {
+    width: 100%;
+    max-width: 400px;           /* keep bars readable, centered */
+  }
+}
+
+/* "More" button (mobile-only render from React, but styling lives here) */
+.more-btn {
+  display: inline-block;
+  margin: 12px auto 0 auto;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.more-btn:hover {
+  background: #111827;
+  border-color: #475569;
+}
+.more-btn:active {
+  transform: translateY(1px);
+}
