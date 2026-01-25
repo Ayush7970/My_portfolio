@@ -24,7 +24,7 @@ export default function CurrentPage() {
         {/* Header */}
         <header className="current-header">
           <h1 className="current-title">Enterprise Agentic Portal</h1>
-          <div className="current-subtitle">Data Augmented Generation</div>
+          <div className="current-subtitle">Retrieval Augmented Generation (RAG)</div>
           <span className="current-underline" />
           <p className="current-lede">
             A graph-driven, multi-agent RAG system built for scalable retrieval,
@@ -102,7 +102,7 @@ export default function CurrentPage() {
                   Client Repo <ExternalLink size={16} />
                 </a>
                 <a
-                  className="current-btn current-btn--ghost"
+                  className="current-btn current-btn--primary"
                   href={SERVER_REPO}
                   target="_blank"
                   rel="noopener noreferrer"
