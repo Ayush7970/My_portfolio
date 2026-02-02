@@ -35,7 +35,7 @@ export default function CurrentPage() {
         {/* Main content */}
         <div className="current-grid">
           {/* Left: Video card */}
-          <article className="current-card current-card--video">
+          {/* <article className="current-card current-card--video">
             <div className="current-card-top">
               <div className="current-card-kicker">Demo</div>
               <a
@@ -73,7 +73,41 @@ export default function CurrentPage() {
                 </span>
               </div>
             </a>
-          </article>
+          </article> */}
+          <article className="current-card current-card--video">
+              <div className="current-card-top">
+                <div className="current-card-kicker">Demo</div>
+
+                {/* Disabled YouTube link for now */}
+                <button
+                  type="button"
+                  className="current-card-link current-card-link--disabled"
+                  onClick={() => {}}
+                  aria-disabled="true"
+                  title="Demo is being uploaded"
+                >
+                  Open on YouTube <ExternalLink size={16} />
+                </button>
+              </div>
+
+              {/* Coming Soon block */}
+              <div className="current-video current-video--soon" aria-label="Demo coming soon">
+                <div className="current-video-soon-bg" />
+
+                <div className="current-video-soon-content">
+                  <div className="current-video-soon-badge">Coming Soon</div>
+
+                  <div className="current-video-soon-title">Demo walkthrough uploading</div>
+
+                  <div className="current-video-soon-text">
+                    I’m currently recording the walkthrough and adding a voiceover.
+                    In the meantime, feel free to explore the repos and highlights.
+                  </div>
+
+                  
+                </div>
+              </div>
+            </article>
 
           {/* Right: Repo + bullets */}
           <aside className="current-stack">
