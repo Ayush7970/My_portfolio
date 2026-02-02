@@ -111,7 +111,7 @@ public/
 **Ayush Bhardwaj**
 
 💼 [LinkedIn](https://linkedin.com/in/ayush--bhardwaj)
-🌐 [Portfolio](https://my-portfolio-green-psi-36.vercel.app)  
+🌐 [Portfolio](https://ayush7970.vercel.app/)  
 🐙 [GitHub](https://github.com/Ayush7970)  
 
 ---
