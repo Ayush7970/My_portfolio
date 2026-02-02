@@ -8,7 +8,7 @@
 
 ## 🚀 Live Website
 
-👉 **[Visit My Portfolio](https://my-portfolio-green-psi-36.vercel.app)**
+👉 **[Visit My Portfolio](https://ayush7970.vercel.app/)**
 
 ---
 
