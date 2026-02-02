@@ -3,29 +3,29 @@ import { Briefcase, Share2, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 
-const cards = [
-  {
-    title: "My Experience",
+  const cards = [
+    {
+    title: "Work Experience",
     icon: <Briefcase size={36} />,
-    img: "/experience.png", // Place your image in public/images or use src/assets and import
-    desc: "Hey, welcome to my work experience! Working on group projects is my forte. Click on Learn more to explore detailed information about my professional work.",
-    link: "/experience", // Link to the Experience page
+    img: "/experience.png",
+    desc: "Where I ship real features, clean up messy problems, and help teams move faster. Click Learn more to see what I built, improved, and owned end to end.",
+    link: "/experience",
     accent: false,
   },
   {
-    title: "My Projects",
+    title: "Personal Projects",
     icon: <Share2 size={36} />,
     img: "/myproject.png",
-    desc: "Hey, welcome to my collection of Computer Science projects, showcasing my work across various languages and innovative ideas. Click on Learn more to explore detailed information about my projects.",
-    link: "/projects", // Link to the Projects page
-    accent: true, // Accent color for this card
+    desc: "My playground for building, breaking, and shipping again from agentic AI to full stack apps. Click Learn more to explore the projects I’m most proud of.",
+    link: "/projects",
+    accent: true,
   },
   {
-    title: "My Activities",
+    title: "Beyond the Code",
     icon: <Award size={36} />,
     img: "/activities.png",
-    desc: "Hey, welcome to my extracurricular activities and awards section. I have a strong passion for leadership and thrive in management roles. Click on any box to Learn more about my professional experiences and achievements.",
-    link: "/activities", // Link to the Activities page
+    desc: "The human side of my grind mentoring students, leading programs, and collecting wins along the way. Click Learn more to see leadership, awards, and impact.",
+    link: "/activities",
     accent: false,
   },
 ];

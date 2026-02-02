@@ -18,6 +18,8 @@ import './styles/ProjectPage.css';
 import './styles/ExperiencePage.css';
 import './styles/LeadershipPage.css';
 import './styles/ContactSection.css';
+import MediumComingSoon from "./components/MediumComingSoon";
+
 
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -53,6 +55,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/medium" element={<MediumComingSoon />} />
         </Routes>
         <Footer />
       </div>

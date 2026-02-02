@@ -34,7 +34,6 @@ const projects = [
     image: 'https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     tags: ['Python', 'Tkinter', 'SQLite'],
     code: 'https://github.com/Ayush7970/super-health-app',
-    demo: 'https://www.youtube.com/watch?v=KmfvAucKpX0&t=1s',
     date: 'February 2024',
     award: true
   },

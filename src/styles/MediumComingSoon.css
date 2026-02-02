@@ -1,0 +1,167 @@
+/* =========================
+   Medium Coming Soon Page
+   ========================= */
+
+.comingsoon-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 50%, #020617 100%);
+  color: #fff;
+}
+
+.comingsoon-card {
+  width: min(640px, 92vw);
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  border: 1px solid rgba(96, 165, 250, 0.20);
+  box-shadow:
+    0 28px 110px rgba(0, 0, 0, 0.70),
+    0 0 0 1px rgba(255, 152, 0, 0.08) inset;
+  backdrop-filter: blur(12px);
+}
+
+.comingsoon-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 260px at 90% 0%, rgba(255, 152, 0, 0.22), rgba(0,0,0,0) 60%),
+    radial-gradient(420px 240px at 12% 30%, rgba(56, 189, 248, 0.18), rgba(0,0,0,0) 58%);
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+
+.comingsoon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.86rem;
+  letter-spacing: 0.2px;
+  color: #0b1220;
+  background: linear-gradient(180deg, #ffcc66 0%, #ff9800 55%, #f59e0b 100%);
+  box-shadow:
+    0 14px 34px rgba(255, 152, 0, 0.20),
+    inset 0 0 0 1px rgba(255, 152, 0, 0.18);
+  position: relative;
+  z-index: 1;
+}
+
+.comingsoon-icon {
+  margin-top: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(63, 170, 255, 0.25);
+  background: rgba(63, 170, 255, 0.10);
+  color: rgba(200, 230, 255, 0.95);
+  position: relative;
+  z-index: 1;
+}
+
+.comingsoon-title {
+  margin: 12px 0 8px;
+  font-size: 1.55rem;
+  font-weight: 950;
+  color: rgba(234, 242, 255, 0.98);
+  position: relative;
+  z-index: 1;
+}
+
+.comingsoon-text {
+  margin: 0 0 14px;
+  color: rgba(234, 242, 255, 0.90);
+  line-height: 1.55;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
+}
+
+.comingsoon-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.comingsoon-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+
+  background: rgba(63, 170, 255, 0.14);
+  border: 1px solid rgba(63, 170, 255, 0.30);
+  color: rgba(234, 242, 255, 0.95);
+  font-weight: 900;
+
+  transition: transform 160ms ease, filter 160ms ease, background 160ms ease;
+}
+
+.comingsoon-back:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.comingsoon-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  padding: 10px 14px;
+  text-decoration: none;
+
+  font-weight: 950;
+  color: #0b1220;
+  background: linear-gradient(180deg, #ffcc66 0%, #ff9800 55%, #f59e0b 100%);
+  box-shadow:
+    0 14px 34px rgba(255, 152, 0, 0.20),
+    inset 0 0 0 1px rgba(255, 152, 0, 0.18);
+
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.comingsoon-home:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+@media (max-width: 600px) {
+  .comingsoon-card {
+    padding: 16px 16px 14px;
+  }
+  .comingsoon-title {
+    font-size: 1.28rem;
+  }
+  .comingsoon-text {
+    font-size: 1.0rem;
+  }
+  .comingsoon-actions {
+    justify-content: stretch;
+  }
+  .comingsoon-back,
+  .comingsoon-home {
+    flex: 1;
+    justify-content: center;
+  }
+}

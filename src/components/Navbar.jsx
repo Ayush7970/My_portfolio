@@ -4,18 +4,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const NAV_ITEMS = [
   { label: "About", id: "about" },
-  {
-    label: "My Portfolio",
-    id: "portfolio",
-    submenu: [
-      { label: "Experience", path: "/experience" },
-      { label: "Projects", path: "/projects" },
-      { label: "Co-Curricular", path: "/activities" },
-    ],
-  },
+  // {
+  //   label: "My Portfolio",
+  //   id: "portfolio",
+  //   submenu: [
+      
+  //     { label: "Projects", path: "/projects" },
+      
+  //   ],
+  // },
+  { label: "Work Experience", path: "/experience" },
+  { label: "Projects", path: "/projects" },
   { label: "Hackathons", id: "hackathon" },
-  { label: "Skills", id: "skills" },
-  { label: "Contact", id: "contact" },
+  { label: "Beyond the Code", path: "/activities" },
+  { label: "Skills", id: "skills" }
+  // { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
