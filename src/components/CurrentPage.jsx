@@ -3,17 +3,14 @@ import { ExternalLink, Github, Play, ArrowRight } from "lucide-react";
 import "../styles/CurrentPage.css";
 
 export default function CurrentPage() {
-  // Replace these URLs later
-  const YOUTUBE_URL = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID";
-  const YOUTUBE_THUMB =
-    "https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg";
+  const YOUTUBE_URL = "https://youtu.be/c7OgpAD53sU";
+  const YOUTUBE_LOGO = "/youtube_logo.png"; // put file in /public/youtube.png
 
   const CLIENT_REPO = "https://github.com/Ayush7970/Rag_System_project_web_v1";
   const SERVER_REPO = "https://github.com/Ayush7970/RAG_system_project_server";
 
   return (
     <section className="current-section current-theme">
-      {/* Background layers */}
       <div className="current-bg">
         <div className="current-bg-grid" />
         <div className="current-bg-glow current-bg-glow-1" />
@@ -21,7 +18,6 @@ export default function CurrentPage() {
       </div>
 
       <div className="current-container">
-        {/* Header */}
         <header className="current-header">
           <h1 className="current-title">Enterprise Agentic Portal</h1>
           <div className="current-subtitle">Retrieval Augmented Generation (RAG)</div>
@@ -32,12 +28,9 @@ export default function CurrentPage() {
           </p>
         </header>
 
-        {/* Main content */}
         <div className="current-grid">
-          {/* Left: Video card */}
-          {/* <article className="current-card current-card--video">
+          <article className="current-card current-card--video">
             <div className="current-card-top">
-              <div className="current-card-kicker">Demo</div>
               <a
                 className="current-card-link"
                 href={YOUTUBE_URL}
@@ -53,65 +46,33 @@ export default function CurrentPage() {
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open YouTube demo"
+              aria-label="Open YouTube walkthrough"
             >
-              <img
-                className="current-video-thumb"
-                src={YOUTUBE_THUMB}
-                alt="Enterprise Agentic Portal demo thumbnail"
-                loading="lazy"
-                decoding="async"
-              />
+              <div className="current-video-thumb current-video-thumb--logo">
+                <img
+                  src={YOUTUBE_LOGO}
+                  alt="YouTube"
+                  className="current-youtube-logo"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
               <div className="current-video-overlay" />
               <div className="current-video-play">
                 <Play size={22} />
               </div>
+
               <div className="current-video-caption">
-                Watch the demo walkthrough
+                Watch the walkthrough
                 <span className="current-video-caption-arrow">
                   <ArrowRight size={16} />
                 </span>
               </div>
             </a>
-          </article> */}
-          <article className="current-card current-card--video">
-              <div className="current-card-top">
-                <div className="current-card-kicker">Demo</div>
+          </article>
 
-                {/* Disabled YouTube link for now */}
-                <button
-                  type="button"
-                  className="current-card-link current-card-link--disabled"
-                  onClick={() => {}}
-                  aria-disabled="true"
-                  title="Demo is being uploaded"
-                >
-                  Open on YouTube <ExternalLink size={16} />
-                </button>
-              </div>
-
-              {/* Coming Soon block */}
-              <div className="current-video current-video--soon" aria-label="Demo coming soon">
-                <div className="current-video-soon-bg" />
-
-                <div className="current-video-soon-content">
-                  <div className="current-video-soon-badge">Coming Soon</div>
-
-                  <div className="current-video-soon-title">Demo walkthrough uploading</div>
-
-                  <div className="current-video-soon-text">
-                    I’m currently recording the walkthrough and adding a voiceover.
-                    In the meantime, feel free to explore the repos and highlights.
-                  </div>
-
-                  
-                </div>
-              </div>
-            </article>
-
-          {/* Right: Repo + bullets */}
           <aside className="current-stack">
-            {/* Repo card */}
             <article className="current-card">
               <div className="current-card-top">
                 <div className="current-card-kicker">Code</div>
@@ -146,18 +107,13 @@ export default function CurrentPage() {
               </div>
             </article>
 
-            {/* Highlights card */}
             <article className="current-card">
               <div className="current-card-top">
                 <div className="current-card-kicker">Highlights</div>
-                <div className="current-chip current-chip--gold">
-                  January 2026
-                </div>
+                <div className="current-chip current-chip--gold">January 2026</div>
               </div>
 
-              <h2 className="current-card-title">
-                What this project delivers
-              </h2>
+              <h2 className="current-card-title">What this project delivers</h2>
 
               <ul className="current-list">
                 <li>
@@ -177,7 +133,6 @@ export default function CurrentPage() {
           </aside>
         </div>
 
-        {/* Footer note (for future sections) */}
         <div className="current-footer-note">
           Next: system design, architecture diagram, and evaluation metrics will
           be added here.

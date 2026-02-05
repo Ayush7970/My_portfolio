@@ -565,3 +565,14 @@
     justify-content: center;
   }
 }
+.current-video-thumb--logo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+
+.current-youtube-logo {
+  width: min(220px, 55%);
+  height: auto;
+}
