@@ -6,8 +6,8 @@ export default function CurrentPage() {
   const YOUTUBE_URL = "https://youtu.be/c7OgpAD53sU";
   const YOUTUBE_LOGO = "/youtube_logo.png"; // put file in /public/youtube.png
 
-  const CLIENT_REPO = "https://github.com/Ayush7970/Rag_System_project_web_v1";
-  const SERVER_REPO = "https://github.com/Ayush7970/RAG_system_project_server";
+  const CLIENT_REPO = "https://github.com/Ayush7970/Rag_System_project_Client2";
+  const SERVER_REPO = "https://github.com/Ayush7970/Rag_agentic_system_server";
 
   return (
     <section className="current-section current-theme">
