@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Send, Mail, Phone, MapPin, Check } from 'lucide-react';
 
+
+
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbw9j05IH3-OibuV2FB81ngaIcSGdvxZoikDLoij2zDb_MDbN_YWiQ8R0NYyLag5m1kjNA/exec";
+
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -49,23 +55,36 @@ const Contact = () => {
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      setIsSubmitting(true);
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-        setTimeout(() => setIsSubmitted(false), 4000);
-      }, 1200);
-    }
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+
+  setIsSubmitting(true);
+
+  try {
+    const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ...formData,
+      source: window.location.hostname,
+    }),
+  });
+
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "Submit failed");
+
+    setIsSubmitted(true);
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setTimeout(() => setIsSubmitted(false), 4000);
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <section id="contact" className="contact-section">
