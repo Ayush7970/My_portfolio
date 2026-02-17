@@ -46,9 +46,9 @@ function Home() {
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* ✅ FIRST */}
       <div className="App">
         <Navbar />
-        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/current" element={<CurrentPage />} />
@@ -62,6 +62,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;

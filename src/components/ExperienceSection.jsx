@@ -5,6 +5,8 @@ import { TypeAnimation } from "react-type-animation";
 
 const ExperienceSection = () => {
   return (
+    <>
+    
     <section className="exp-section exp-theme cosmic" id="experience">
       {/* Background layers (we’ll style these in CSS next) */}
       <div className="exp-bg" aria-hidden="true">
@@ -64,6 +66,7 @@ const ExperienceSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
