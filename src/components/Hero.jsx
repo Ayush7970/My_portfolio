@@ -10,7 +10,6 @@ import {
   FolderKanban,
 } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
-import WorkPopup from "./WorkPopup";
 import MolecularBackground from "./MolecularBackground";
 
 const Hero = () => {
@@ -178,11 +177,6 @@ const Hero = () => {
           <ArrowDownCircle size={36} />
         </button>
 
-        <WorkPopup
-          href="/current"
-          message="Want to see what I'm currently working on?"
-          cta="View"
-        />
       </section>
     </>
   );

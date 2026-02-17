@@ -28,6 +28,8 @@ import Experience from './components/ExperienceSection';
 import Projects from './components/Projects';
 import Activities from './components/Leadership'; // Create this if not present
 import ScrollToTop from './components/ScrollToTop';
+import WorkPopup from "./components/WorkPopup";
+
 
 function Home() {
   return (
@@ -49,6 +51,11 @@ function App() {
       <ScrollToTop /> {/* ✅ FIRST */}
       <div className="App">
         <Navbar />
+        <WorkPopup
+          href="/current"
+          message="Want to see what I'm currently working on?"
+          cta="View"
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/current" element={<CurrentPage />} />

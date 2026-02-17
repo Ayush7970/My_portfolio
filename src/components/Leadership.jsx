@@ -53,7 +53,7 @@ export default function Leadership3DSlider() {
       className="portfolio-title"
       style={{ textAlign: "center", fontWeight: 900, marginBottom: "0.25rem" }}
     >
-      Leadership Section 
+      Beyond The Code 
     </h2>
     <span className="projects-section-underline"></span>
     
