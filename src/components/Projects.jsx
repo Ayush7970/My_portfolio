@@ -6,17 +6,22 @@ import artSeeImg from '../../public/ArtSee1.jpg';
 
 
 
+
 const projects = [
-  {
-    title: 'ArtSee',
+    {
+    title: "RAG Agentic System",
     description:
-      'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
-    image: artSeeImg,
-    tags: ['React', 'Python', 'uAgents', 'Groq', 'Anthropic', 'LLM', 'Agentic AI'],
-    code: 'https://github.com/Ayush7970/Collab_AI_hack', 
-    demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
-    date: 'June 2025',
-    award: false
+      "End-to-end RAG platform with backend services for document ingestion, chunking + embeddings, vector/hybrid retrieval, and chat orchestration. Exposes APIs for projects, conversations, document management, and grounded responses with sources.",
+    image: "/Agentic_enterprise_portal.png",
+    tags: ["Python", "FastAPI", "PostgreSQL", "pgvector", "Docker", "Retrieval-Augmented Generation"],
+    code: "https://github.com/Ayush7970/Rag_agentic_system_server",
+    demo: "https://www.youtube.com/watch?v=c7OgpAD53sU",
+    date: "2025",
+    award: false,
+    moreLinks: [
+      { type: "code", label: "Frontend Repo", url: "https://github.com/Ayush7970/Rag_System_project_Client2" },
+      { type: "external", label: "System Architecture (Lucid)", url: "https://lucid.app/lucidchart/8caa218d-8dd2-4dc0-8c86-2fb64fbac522/edit" },
+    ],
   },
   {
     title: 'Tariffarm',
@@ -29,10 +34,31 @@ const projects = [
     award: true
   },
   {
+    title: "Agile Architects — Gym Tracker",
+    description:
+      "Full-stack gym tracker app with Angular frontend, Django + DRF backend, PostgreSQL, and Docker Compose. Includes support for live camera occupancy ingestion via OpenCV script and REST endpoints.",
+    image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    tags: ["Angular", "Django", "PostgreSQL", "Docker", "OpenCV"],
+    code: "https://github.com/Ayush7970/Agile_Architects",
+    date: "2025",
+    award: false,
+  },
+  {
+    title: 'ArtSee',
+    description:
+      'ArtSee is an agentic collaboration platform that matches creators and runs AI-assisted negotiations. Built with uAgents, Claude 4, and Groq Llama 3; includes a negotiation log viewer and dummy collaborator profiles.',
+    image: artSeeImg,
+    tags: ['React', 'Python', 'uAgents', 'Groq', 'Agentic AI'],
+    code: 'https://github.com/Ayush7970/Collab_AI_hack', 
+    demo: 'https://youtube.com/watch?v=kdlt0cKnx4k',
+    date: 'June 2025',
+    award: false
+  },
+  {
     title: 'Super Health App',
     description: 'An advanced desktop health assistant built using Python, Tkinter, and SQLite. The app helps track prescriptions, set medication reminders, and locate doctors. It combines mindfulness tools for a holistic health management solution.',
     image: 'https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    tags: ['Python', 'Tkinter', 'SQLite'],
+    tags: ['Python', 'SQLite'],
     code: 'https://github.com/Ayush7970/super-health-app',
     date: 'February 2024',
     award: true
@@ -50,7 +76,7 @@ const projects = [
     title: 'Sustainable AI Farming Assistant',
     description: 'A smart farming assistant that offers AI-based disaster predictions and real-time alerts. Built using React, Flask, and ML models to empower farmers. The platform integrates Ollama chatbot for interactive farming advice.',
     image: 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&fit=crop&w=800&q=80',
-    tags: ['React', 'Flask', 'ML', 'Ollama', 'AI'],
+    tags: ['React', 'Flask', 'Machine Learning', 'Ollama'],
     code: 'https://github.com/Ayush7970/sparkshacks_teamAI',
     demo: 'https://www.youtube.com/watch?v=ppVIs93FwGI',
     date: 'February 2024'
@@ -59,7 +85,7 @@ const projects = [
     title: 'ChatNexus',
     description: 'A GPT-based character-level language model built with PyTorch. The app implements transformer blocks and multi-head attention. It generates high-quality text predictions for various NLP tasks.',
     image: 'https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    tags: ['Python', 'PyTorch', 'ML'],
+    tags: ['Python', 'PyTorch', 'Machine Learning'],
     code: 'https://github.com/Ayush7970/learn_llm',
     date: 'July 2024'
   },
@@ -83,7 +109,7 @@ const projects = [
     title: 'Demo AlgoLearn',
     description: 'AlgoLearn is a platform to learn and visualize algorithms interactively. It provides live coding examples and step-by-step walkthroughs. The app is designed for students and educators alike.',
     image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&fit=crop&w=800&q=80',
-    tags: ['React', 'Next.js', 'Algorithms', 'Education'],
+    tags: ['React', 'Next.js', 'Algorithms'],
     code: 'https://github.com/Ayush7970/algoLearn',
     demo: 'https://algo-learn-neon.vercel.app/',
     date: 'June 2025'
