@@ -28,7 +28,7 @@ const projects = [
     description: 'Tariffarm is a full-stack international trade platform that helps users estimate import costs with real-time tariff data. It integrates Flask and React.js for a seamless frontend-backend experience. Interactive trade route maps and Gemini API prompts enhance usability.',
     image: 'https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     tags: ['React', 'Flask', 'Python', 'JavaScript'],
-    code: 'https://github.com/Ayush7970/tariffarm',
+    code: 'https://github.com/Ayush7970/Wildhacks_tariff/',
     demo: 'https://www.youtube.com/watch?v=bZZq8BTu3Vk',
     date: 'April 2025',
     award: true
