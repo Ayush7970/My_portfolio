@@ -30,7 +30,7 @@ const Hero = () => {
       {
         label: "Linkedin",
         icon: <Briefcase size={18} />,
-        href: "https://www.linkedin.com/in/ayush--bhardwaj",
+        href: "https://www.linkedin.com/in/ayush7970/",
         external: true,
         tone: "blue",
       },
